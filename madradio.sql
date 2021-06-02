@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2021 at 12:40 AM
+-- Generation Time: Jun 02, 2021 at 04:43 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -50,7 +50,8 @@ CREATE TABLE `comentarios` (
   `id` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `comentario` text NOT NULL,
-  `id_publicacion` int(11) NOT NULL
+  `id_publicacion` int(11) NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -75,7 +76,8 @@ CREATE TABLE `publicaciones` (
   `id` int(11) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descripcion` text NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -89,6 +91,13 @@ CREATE TABLE `roles` (
   `role` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `role`) VALUES
+(1, 'Administrador');
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +110,13 @@ CREATE TABLE `usuarios` (
   `password` varchar(50) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `email`, `password`, `role_id`) VALUES
+(1, 'administrador@mail.com', '123456', 1);
 
 --
 -- Indexes for dumped tables
@@ -179,13 +195,13 @@ ALTER TABLE `publicaciones`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

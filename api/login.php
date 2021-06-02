@@ -3,7 +3,7 @@
 $json = file_get_contents('php://input');
 
 if (!$json) {
-    echo json_encode(["msg" => "No se han proporcionado credenciales"]);
+    echo json_encode(["status" => "false", "msg" => "No se han proporcionado credenciales"]);
     exit;
 }
 
@@ -18,11 +18,10 @@ $stmt->bind_param("ss", $data->email, $data->password);
 
 // execute
 $stmt->execute();
-//$stmt->store_result();
 $stmt->bind_result($id_usuario, $role_id);
 $stmt->fetch();
 
 $stmt->close();
 $link->close();
 
-echo json_encode(["data" => ["id_usuario" => $id_usuario, "role_id" => $role_id]]);
+echo json_encode(["status" => "true", "id_usuario" => $id_usuario, "role_id" => $role_id]);
