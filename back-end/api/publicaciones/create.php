@@ -13,8 +13,8 @@ $data = json_decode($json);
 $link = new mysqli('localhost', 'root', '', 'madradio', 3306);
 
 // preparamos y adjuntamos los parámetros
-$stmt = $link->prepare("INSERT INTO usuarios VALUES ?, ?, ?");
-$stmt->bind_param("ssi", $data->email, $data->password, $data->role_id);
+$stmt = $link->prepare("INSERT INTO publicaciones VALUES ?, ?, ?, ?, ?, ?");
+$stmt->bind_param("ssi", $data->titulo, $data->descripcion, $data->etiquetas, $data->);
 
 // ejecutamos
 $stmt->execute();

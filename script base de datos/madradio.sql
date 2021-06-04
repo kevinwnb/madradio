@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2021 at 05:17 AM
+-- Generation Time: Jun 04, 2021 at 05:32 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -99,6 +99,8 @@ CREATE TABLE `publicaciones` (
   `titulo` varchar(50) NOT NULL,
   `descripcion` text NOT NULL,
   `etiquetas` text DEFAULT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `id_genero` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -178,7 +180,9 @@ ALTER TABLE `imagenes`
 --
 ALTER TABLE `publicaciones`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_categoria` (`id_categoria`),
+  ADD KEY `id_genero` (`id_genero`);
 
 --
 -- Indexes for table `roles`
@@ -260,7 +264,9 @@ ALTER TABLE `imagenes`
 -- Constraints for table `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  ADD CONSTRAINT `publicaciones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `publicaciones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `publicaciones_ibfk_2` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `publicaciones_ibfk_3` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `usuarios`
