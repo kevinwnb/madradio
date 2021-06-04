@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['id_usuario'])) {
-    echo json_encode(["status" => false, "msg" => "Debes iniciar sesión para publicar un episodio"]);
+    echo json_encode(["status" => false, "msg" => "Debes iniciar sesión para actualizar un episodio"]);
     exit;
 }
 
@@ -18,8 +18,8 @@ $data = json_decode($json);
 $link = new mysqli('localhost', 'root', '', 'madradio', 3306);
 
 // preparamos y adjuntamos los parámetros
-$stmt = $link->prepare("INSERT INTO publicaciones VALUES ?, ?, ?, ?, ?, ?, ?");
-$stmt->bind_param("sssiiis", $data->titulo, $data->descripcion, $data->etiquetas, $data->id_categoria, $data->id_genero, $_SESSION["id_usuario"], $data->fecha);
+$stmt = $link->prepare("UPDATE publicaciones SET titulo = ?, descripcion = ?, etiquetas = ?, id_categoria = ?, id_genero = ? WHERE id = ?");
+$stmt->bind_param("sssiii", $data->titulo, $data->descripcion, $data->etiquetas, $data->id_categoria, $data->id_genero, $data->id);
 
 // ejecutamos
 $stmt->execute();
@@ -27,11 +27,11 @@ $stmt->execute();
 if ($stmt->affected_rows <= 0) {
     $stmt->close();
     $link->close();
-    echo json_encode(["status" => false, "msg" => "No se ha creado la publicación"]);
+    echo json_encode(["status" => false, "msg" => "No se ha actualizado la publicación"]);
     exit;
 }
 
 $stmt->close();
 $link->close();
 
-echo json_encode(["status" => true, "msg" => "Publicación creada con éxito"]);
+echo json_encode(["status" => true, "msg" => "Publicación actualizada con éxito"]);
