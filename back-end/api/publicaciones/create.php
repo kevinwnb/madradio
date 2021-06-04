@@ -8,6 +8,7 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 require "../../img_upload_script.php";
+require "../../audio_upload_script.php";
 
 // Agarramos el json de la solicitud recibida
 $json = $_POST["json"];
@@ -23,8 +24,8 @@ $data = json_decode($json);
 $link = new mysqli('localhost', 'root', '', 'madradio', 3306);
 
 // preparamos y adjuntamos los parámetros
-$stmt = $link->prepare("INSERT INTO publicaciones VALUES ?, ?, ?, ?, ?, ?, ?");
-$stmt->bind_param("sssiiis", $data->titulo, $data->descripcion, $data->etiquetas, $data->id_categoria, $data->id_genero, $_SESSION["id_usuario"], $data->fecha);
+$stmt = $link->prepare("INSERT INTO publicaciones VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?");
+$stmt->bind_param("sssiiisss", $data->titulo, $data->descripcion, $data->etiquetas, $data->id_categoria, $data->id_genero, $_SESSION["id_usuario"], $target_file_image, $target_file_audio, $data->fecha);
 
 // ejecutamos
 $stmt->execute();

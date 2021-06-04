@@ -30,4 +30,4 @@ $link->close();
 $_SESSION["id_usuario"] = $id_usuario;
 $_SESSION["role_id"] = $role_id;
 
-echo json_encode(["status" => true, "id_usuario" => $id_usuario, "role_id" => $role_id]);
+echo json_encode(["status" => true, "msg" => "Has iniciado sesión", "id_usuario" => $id_usuario, "role_id" => $role_id]);
