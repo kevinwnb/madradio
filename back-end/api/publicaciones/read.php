@@ -1,13 +1,10 @@
 <?php
-// Agarramos el json de la solicitud recibida
-$json = file_get_contents('php://input');
-
-if (empty($json)) {
-    echo json_encode(["status" => false, "msg" => "No se han proporcionado los datos necesarios"]);
+// Convertimos el json recibido a un objeto PHP
+if (!isset($_GET["id"])) {
+    echo json_encode(["status" => false, "msg" => "No se han proporcionado los parámetros necesarios"]);
     exit;
 }
 
-// Convertimos el json recibido a un objeto PHP
 $id = $_GET["id"];
 
 $link = new mysqli('localhost', 'root', '', 'madradio', 3306);
