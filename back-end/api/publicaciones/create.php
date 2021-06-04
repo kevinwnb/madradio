@@ -4,8 +4,10 @@ if (!isset($_SESSION['id_usuario'])) {
     exit;
 }
 
+require "../../img_upload_script.php";
+
 // Agarramos el json de la solicitud recibida
-$json = file_get_contents('php://input');
+$json = $_POST["json"];
 
 if (empty($json)) {
     echo json_encode(["status" => false, "msg" => "No se han proporcionado los datos necesarios"]);

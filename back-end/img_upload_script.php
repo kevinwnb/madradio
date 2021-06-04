@@ -1,6 +1,6 @@
 <?php
 $target_dir = "uploads/";
-$target_file = $target_dir . uniqid() . basename($_FILES["fileToUpload"]["name"]);
+$target_file = $target_dir . uniqid() . basename($_FILES["imagen"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 

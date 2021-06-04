@@ -8,13 +8,13 @@ if (empty($json)) {
 }
 
 // Convertimos el json recibido a un objeto PHP
-$data = json_decode($json);
+$id = $_GET["id"];
 
 $link = new mysqli('localhost', 'root', '', 'madradio', 3306);
 
 // preparamos y adjuntamos los parámetros
 $stmt = $link->prepare("SELECT * FROM publicaciones WHERE id = ?");
-$stmt->bind_param("i", $data->id);
+$stmt->bind_param("i", $id);
 
 // ejecutamos
 $stmt->execute();
