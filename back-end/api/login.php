@@ -1,4 +1,7 @@
 <?php
+session_start();
+header("Content-Type: application/json;charset=utf-8");
+
 // Agarramos el json de la solicitud recibida
 $json = file_get_contents('php://input');
 
@@ -23,5 +26,8 @@ $stmt->fetch();
 
 $stmt->close();
 $link->close();
+
+$_SESSION["id_usuario"] = $id_usuario;
+$_SESSION["role_id"] = $role_id;
 
 echo json_encode(["status" => true, "id_usuario" => $id_usuario, "role_id" => $role_id]);

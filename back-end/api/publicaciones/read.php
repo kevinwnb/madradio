@@ -1,4 +1,6 @@
 <?php
+header("Content-Type: application/json;charset=utf-8");
+
 // Convertimos el json recibido a un objeto PHP
 if (!isset($_GET["id"])) {
     echo json_encode(["status" => false, "msg" => "No se han proporcionado los parámetros necesarios"]);

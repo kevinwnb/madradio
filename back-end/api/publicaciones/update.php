@@ -1,4 +1,7 @@
 <?php
+session_start();
+header("Content-Type: application/json;charset=utf-8");
+
 if (!isset($_SESSION['id_usuario'])) {
     echo json_encode(["status" => false, "msg" => "Debes iniciar sesión para actualizar un episodio"]);
     exit;

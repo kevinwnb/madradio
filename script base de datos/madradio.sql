@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2021 at 05:32 AM
+-- Generation Time: Jun 04, 2021 at 06:43 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -104,6 +104,13 @@ CREATE TABLE `publicaciones` (
   `id_usuario` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `publicaciones`
+--
+
+INSERT INTO `publicaciones` (`id`, `titulo`, `descripcion`, `etiquetas`, `id_categoria`, `id_genero`, `id_usuario`, `fecha`) VALUES
+(1, 'publicación de prueba', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Rock, rock, rock and roll, música, music', 2, 3, 1, '2021-06-04');
 
 -- --------------------------------------------------------
 
@@ -229,7 +236,7 @@ ALTER TABLE `imagenes`
 -- AUTO_INCREMENT for table `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `roles`
