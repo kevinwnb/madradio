@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2021 at 04:43 AM
+-- Generation Time: Jun 04, 2021 at 05:17 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -57,6 +57,28 @@ CREATE TABLE `comentarios` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `generos`
+--
+
+CREATE TABLE `generos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `generos`
+--
+
+INSERT INTO `generos` (`id`, `nombre`) VALUES
+(1, 'POP'),
+(2, 'Jazz'),
+(3, 'Rock'),
+(4, 'Punk'),
+(5, 'Rap');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `imagenes`
 --
 
@@ -76,6 +98,7 @@ CREATE TABLE `publicaciones` (
   `id` int(11) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descripcion` text NOT NULL,
+  `etiquetas` text DEFAULT NULL,
   `id_usuario` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -106,6 +129,7 @@ INSERT INTO `roles` (`id`, `role`) VALUES
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
   `role_id` int(11) NOT NULL
@@ -115,8 +139,8 @@ CREATE TABLE `usuarios` (
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `email`, `password`, `role_id`) VALUES
-(1, 'administrador@mail.com', '123456', 1);
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `role_id`) VALUES
+(1, '', 'administrador@mail.com', '123456', 1);
 
 --
 -- Indexes for dumped tables
@@ -135,6 +159,12 @@ ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_publicacion` (`id_publicacion`),
   ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indexes for table `generos`
+--
+ALTER TABLE `generos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `imagenes`
@@ -178,6 +208,12 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `comentarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `generos`
+--
+ALTER TABLE `generos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `imagenes`
