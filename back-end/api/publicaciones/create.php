@@ -7,10 +7,16 @@ if (!isset($_SESSION['id_usuario'])) {
     exit;
 }
 
+$status = true;
 $msg = "";
 
 require "../../img_upload_script.php";
 require "../../audio_upload_script.php";
+
+if (!$status) {
+    echo json_encode(["status" => $status, "msg" => $msg]);
+    exit;
+}
 
 // Agarramos el json de la solicitud recibida
 $json = $_POST["json"];
