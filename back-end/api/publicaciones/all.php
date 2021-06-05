@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json;charset=utf-8");
 
-$link = new mysqli('localhost', 'root', '', 'madradio', 3306);
+require "../../db_conexion.php";
 
 // preparamos y adjuntamos los parámetros
 $stmt = $link->prepare("SELECT * FROM publicaciones");

@@ -23,7 +23,7 @@ if (empty($json)) {
 // Convertimos el json recibido a un objeto PHP
 $data = json_decode($json);
 
-$link = new mysqli('localhost', 'root', '', 'madradio', 3306);
+require "../../db_conexion.php";
 
 // preparamos y adjuntamos los parámetros
 $stmt = $link->prepare("INSERT INTO publicaciones (titulo, descripcion, etiquetas, id_categoria, id_genero, id_usuario, url_imagen, url_audio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
