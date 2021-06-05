@@ -1,8 +1,6 @@
 <?php
 header("Content-Type: application/json;charset=utf-8");
 
-$msg = "";
-
 if (!isset($_FILES["audio"])) {
     $msg = "No se ha proporcionado el audio";
 }

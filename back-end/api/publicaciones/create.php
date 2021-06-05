@@ -7,6 +7,8 @@ if (!isset($_SESSION['id_usuario'])) {
     exit;
 }
 
+$msg = "";
+
 require "../../img_upload_script.php";
 require "../../audio_upload_script.php";
 
