@@ -15,8 +15,13 @@ $data = json_decode($json);
 $link = new mysqli('localhost', 'root', '', 'madradio', 3306);
 
 // preparamos y adjuntamos los parámetros
-$stmt = $link->prepare("INSERT INTO usuarios VALUES ?, ?, ?");
-$stmt->bind_param("ssi", $data->email, $data->password, $data->role_id);
+$stmt = $link->prepare("INSERT INTO usuarios (nombre, email, password, role_id) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("sssi", $nombre, $email, $password, $role_id);
+
+$nombre = $data->nombre;
+$email = $data->email;
+$password = $data->password;
+$role_id = intval($data->role_id);
 
 // ejecutamos
 $stmt->execute();

@@ -24,8 +24,15 @@ $data = json_decode($json);
 $link = new mysqli('localhost', 'root', '', 'madradio', 3306);
 
 // preparamos y adjuntamos los parámetros
-$stmt = $link->prepare("INSERT INTO publicaciones VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?");
-$stmt->bind_param("sssiiisss", $data->titulo, $data->descripcion, $data->etiquetas, $data->id_categoria, $data->id_genero, $_SESSION["id_usuario"], $target_file_image, $target_file_audio, $data->fecha);
+$stmt = $link->prepare("INSERT INTO publicaciones (titulo, descripcion, etiquetas, id_categoria, id_genero, id_usuario, url_imagen, url_audio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssiiisss", $titulo, $descripcion, $etiquetas, $id_categoria, $id_genero, $_SESSION["id_usuario"], $target_file_image, $target_file_audio, $fecha);
+
+$titulo = $data->titulo;
+$descripcion = $data->descripcion;
+$etiquetas = $data->etiquetas;
+$id_categoria = intval($data->id_categoria);
+$id_genero = intval($data->id_genero);
+$fecha = date('Y-m-d');
 
 // ejecutamos
 $stmt->execute();
