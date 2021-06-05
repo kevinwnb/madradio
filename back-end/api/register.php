@@ -20,8 +20,8 @@ $stmt->bind_param("sssi", $nombre, $email, $password, $role_id);
 
 $nombre = $data->nombre;
 $email = $data->email;
-$password = $data->password;
-$role_id = intval($data->role_id);
+$password = password_hash($data->password, PASSWORD_DEFAULT);
+$role_id = 2;
 
 // ejecutamos
 $stmt->execute();
