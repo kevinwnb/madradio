@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Database\Eloquent\JsonEncodingException;
+
 header("Content-Type: application/json;charset=utf-8");
 
 // Agarramos el json de la solicitud recibida
@@ -11,6 +14,11 @@ if (empty($json)) {
 
 // Convertimos el json recibido a un objeto PHP
 $data = json_decode($json);
+
+if ($data->password != $data->repeat_password) {
+    echo json_encode(["status" => false, "msg" => "Las contraseñas no coinciden"]);
+    exit;
+}
 
 require "../db_conexion.php";
 
