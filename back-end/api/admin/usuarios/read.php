@@ -12,20 +12,20 @@ if (!isset($_GET["id"])) {
     exit;
 }
 
-$id = $_GET["id"];
-
 require "../../../db_conexion.php";
 
 // preparamos y adjuntamos los parámetros
-$stmt = $link->prepare("SELECT id, nombre, email, role_id FROM usuarios WHERE id = ?");
+$stmt = $link->prepare("SELECT usuarios.id, usuarios.nombre, usuarios.email, usuarios.role_id, roles.role FROM usuarios INNER JOIN roles ON usuarios.role_id = roles.id WHERE usuarios.id = ?");
 $stmt->bind_param("i", $id);
+
+$id = $_GET["id"];
 
 // ejecutamos
 $stmt->execute();
-$stmt->bind_result($id, $nombre, $email, $role_id);
+$stmt->bind_result($id, $nombre, $email, $role_id, $role);
 $stmt->fetch();
 
 $stmt->close();
 $link->close();
 
-echo json_encode(["status" => true, "id" => $id, "nombre" => $nombre, "email" => $email, "role_id" => $role_id]);
+echo json_encode(["status" => true, "id" => $id, "nombre" => $nombre, "email" => $email, "role_id" => $role_id, "role" => $role]);

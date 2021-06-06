@@ -109,3 +109,45 @@ if (document.querySelector("#admin-confirm-delete-user")) {
         .then((data) => window.location.reload());
     });
 }
+
+if (document.querySelector("#admin-confirm-delete-user")) {
+  document
+    .querySelector("#admin-confirm-delete-user")
+    .addEventListener("click", function () {
+      fetch(
+        api_base_url +
+          "api/admin/usuarios/delete.php?id=" +
+          document.querySelector("#admin-confirm-delete-user").dataset.idusuario
+      )
+        .then((res) => res.json())
+        .then((data) => window.location.reload());
+    });
+}
+
+if (document.querySelector("#modify-user-form")) {
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+  var id = url.searchParams.get("id");
+
+  fetch(api_base_url + "api/admin/usuarios/read.php?id=" + id)
+    .then((res) => res.json())
+    .then((data) => {
+      var option = document.createElement("option");
+      option.value = data.role_id;
+      option.innerText = data.role;
+      option.selected = "selected";
+      document.querySelector("#select-role").appendChild(option);
+
+      if (data.role_id == 1) {
+        option = document.createElement("option");
+        option.value = 2;
+        option.innerText = "Cliente";
+        document.querySelector("#select-role").appendChild(option);
+      } else {
+        option = document.createElement("option");
+        option.value = 1;
+        option.innerText = "Administrador";
+        document.querySelector("#select-role").appendChild(option);
+      }
+    });
+}

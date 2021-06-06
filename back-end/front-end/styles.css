@@ -4,6 +4,6 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#login-form {
+div.card {
   max-width: 18rem;
 }
