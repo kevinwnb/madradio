@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Database\Eloquent\JsonEncodingException;
-
 header("Content-Type: application/json;charset=utf-8");
 
 // Agarramos el json de la solicitud recibida
