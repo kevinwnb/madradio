@@ -75,6 +75,11 @@ if (document.querySelector("#tabla-usuarios")) {
           a.classList.add("m-2");
           a.setAttribute("data-toggle", "modal");
           a.setAttribute("data-target", "#exampleModal");
+          a.addEventListener("click", function () {
+            document
+              .querySelector("#admin-confirm-delete-user")
+              .setAttribute("data-idusuario", item.id);
+          });
           td_acciones.appendChild(a);
 
           tr.appendChild(th);
@@ -88,5 +93,19 @@ if (document.querySelector("#tabla-usuarios")) {
       } else {
         alert(data.msg);
       }
+    });
+}
+
+if (document.querySelector("#admin-confirm-delete-user")) {
+  document
+    .querySelector("#admin-confirm-delete-user")
+    .addEventListener("click", function () {
+      fetch(
+        api_base_url +
+          "api/admin/usuarios/delete.php?id=" +
+          document.querySelector("#admin-confirm-delete-user").dataset.idusuario
+      )
+        .then((res) => res.json())
+        .then((data) => window.location.reload());
     });
 }
