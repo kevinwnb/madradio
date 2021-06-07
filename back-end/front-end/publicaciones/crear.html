@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Descripción</label>
-                    <textarea id="descripcion" placeholder="Descripción"></textarea>
+                    <textarea class="form-control" id="descripcion" placeholder="Descripción"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Etiquetas</label>
@@ -34,13 +34,15 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Categoría</label>
                     <select id="select-categoria">
-
+                        <option selected>--Selecciona Categoría--</option>
+                        <option id="1">Podcast</option>
+                        <option id="2">Radio</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Género</label>
                     <select id="select-genero">
-
+                        <option selected>--Selecciona Género--</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -50,10 +52,6 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Audio</label>
                     <input type="file" class="form-control" id="audio">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Repetir Contraseña</label>
-                    <input type="password" class="form-control" id="repeat-password" placeholder="Repetir Contraseña">
                 </div>
                 <div class="text-center">
                     <button id="create-btn" type="button" class="btn btn-success">Crear</button>

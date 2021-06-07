@@ -276,3 +276,54 @@ if (document.querySelector("#tabla-publicaciones-usuario")) {
     window.location.href(base_url + "admin/crear.html");
   });
 }
+
+// Crear Publicación
+if (document.querySelector("#create-pub-form")) {
+  fetch(api_base_url + "api/generos/all.php")
+    .then((res) => res.json())
+    .then((data) => {
+      data.generos.forEach((item) => {
+        var option = document.createElement("option");
+        option.value = item.id;
+        option.innerText = item.nombre;
+        document.querySelector("#select-genero").appendChild(option);
+      });
+    });
+
+  document.querySelector("#create-btn").addEventListener("click", function () {
+    let formData = new FormData();
+    formData.append("titulo", document.querySelector("#titulo").value);
+    formData.append(
+      "descripcion",
+      document.querySelector("#descripcion").value
+    );
+    formData.append("etiquetas", document.querySelector("#etiquetas").value);
+    formData.append(
+      "id_categoria",
+      document.querySelector("#select-categoria").value
+    );
+    formData.append(
+      "id_genero",
+      document.querySelector("#select-genero").value
+    );
+    formData.append("imagen", document.querySelector("#imagen").files[0]);
+    formData.append("audio", document.querySelector("#audio").files[0]);
+
+    fetch(api_base_url + "api/publicaciones/create.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status) {
+          window.location.href = base_url + "publicaciones/mi-contenido.html";
+        } else {
+          alert(data.msg);
+        }
+      });
+  });
+
+  document.querySelector("#cancel-btn").addEventListener("click", function () {
+    window.location.href = base_url + "admin/dashboard.html";
+  });
+}
