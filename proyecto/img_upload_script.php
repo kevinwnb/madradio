@@ -9,7 +9,8 @@ if (!isset($_FILES["imagen"]) && !isset($data->id)) {
 } else {
     $target_dir_image = realpath(dirname(__FILE__)) . "/uploads/imagenes/";
     $target_dir_image = str_replace('\\', '/', $target_dir_image);
-    $target_file_image = $target_dir_image . uniqid() . "." . pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
+    $file_name = uniqid() . "." . pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
+    $target_file_image = $target_dir_image . $file_name;
     $uploadOk = 0;
     $imageFileType = strtolower(pathinfo($target_file_image, PATHINFO_EXTENSION));
     $status = false;
@@ -39,3 +40,10 @@ if (!isset($_FILES["imagen"]) && !isset($data->id)) {
         }
     }
 }
+
+if (!$status) {
+    echo json_encode(["status" => $status, "msg" => $msg]);
+    exit;
+}
+
+$target_file_image = "/uploads/imagenes/" . $file_name;

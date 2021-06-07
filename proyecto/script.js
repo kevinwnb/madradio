@@ -1,4 +1,4 @@
-var base_url = "http://localhost/front-end/";
+var base_url = "http://localhost/";
 var api_base_url = "http://localhost/";
 
 // Login
@@ -118,6 +118,7 @@ if (document.querySelector("#admin-confirm-delete-user")) {
     });
 }
 
+// Eliminar Usuario
 if (document.querySelector("#admin-confirm-delete-user")) {
   document
     .querySelector("#admin-confirm-delete-user")
@@ -228,18 +229,19 @@ if (document.querySelector("#tabla-publicaciones-usuario")) {
     .then((res) => res.json())
     .then((data) => {
       if (data.status) {
-        data.usuarios.forEach((item) => {
+        data.publicaciones.forEach((item) => {
           var tr = document.createElement("tr");
           var th = document.createElement("th");
           th.scope = "row";
-          th.innerText = item.id;
-          var td_nombre = document.createElement("td");
-          var td_email = document.createElement("td");
-          var td_role = document.createElement("td");
+          var img = document.createElement("img");
+          img.src = item.url_imagen;
+          img.style.width = "150px";
+          th.appendChild(img);
+          var td_titulo = document.createElement("td");
+          var td_fecha = document.createElement("td");
           var td_acciones = document.createElement("td");
-          td_nombre.innerText = item.nombre;
-          td_email.innerText = item.email;
-          td_role.innerText = item.role;
+          td_titulo.innerText = item.titulo;
+          td_fecha.innerText = item.fecha;
           var a = document.createElement("a");
           a.href = "modificar.html?id=" + item.id;
           a.innerText = "Modificar";
@@ -254,18 +256,19 @@ if (document.querySelector("#tabla-publicaciones-usuario")) {
           a.setAttribute("data-target", "#exampleModal");
           a.addEventListener("click", function () {
             document
-              .querySelector("#admin-confirm-delete-user")
-              .setAttribute("data-idusuario", item.id);
+              .querySelector("#confirm-delete-pub")
+              .setAttribute("data-idpublicacion", item.id);
           });
           td_acciones.appendChild(a);
 
           tr.appendChild(th);
-          tr.appendChild(td_nombre);
-          tr.appendChild(td_email);
-          tr.appendChild(td_role);
+          tr.appendChild(td_titulo);
+          tr.appendChild(td_fecha);
           tr.appendChild(td_acciones);
 
-          document.querySelector("#tabla-usuarios tbody").appendChild(tr);
+          document
+            .querySelector("#tabla-publicaciones-usuario tbody")
+            .appendChild(tr);
         });
       } else {
         alert(data.msg);
@@ -275,6 +278,23 @@ if (document.querySelector("#tabla-publicaciones-usuario")) {
   document.querySelector("#crear-btn").addEventListener("click", function () {
     window.location.href(base_url + "admin/crear.html");
   });
+}
+
+// Eliminar publicacion
+if (document.querySelector("#confirm-delete-pub")) {
+  document
+    .querySelector("#confirm-delete-pub")
+    .addEventListener("click", function () {
+      fetch(api_base_url + "api/publicaciones/delete.php", {
+        method: "POST",
+        body: JSON.stringify({
+          id: document.querySelector("#confirm-delete-pub").dataset
+            .idpublicacion,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => window.location.reload());
+    });
 }
 
 // Crear Publicación
@@ -292,20 +312,17 @@ if (document.querySelector("#create-pub-form")) {
 
   document.querySelector("#create-btn").addEventListener("click", function () {
     let formData = new FormData();
-    formData.append("titulo", document.querySelector("#titulo").value);
     formData.append(
-      "descripcion",
-      document.querySelector("#descripcion").value
+      "json",
+      JSON.stringify({
+        titulo: document.querySelector("#titulo").value,
+        descripcion: document.querySelector("#descripcion").value,
+        etiquetas: document.querySelector("#etiquetas").value,
+        id_categoria: document.querySelector("#select-categoria").value,
+        id_genero: document.querySelector("#select-genero").value,
+      })
     );
-    formData.append("etiquetas", document.querySelector("#etiquetas").value);
-    formData.append(
-      "id_categoria",
-      document.querySelector("#select-categoria").value
-    );
-    formData.append(
-      "id_genero",
-      document.querySelector("#select-genero").value
-    );
+
     formData.append("imagen", document.querySelector("#imagen").files[0]);
     formData.append("audio", document.querySelector("#audio").files[0]);
 
@@ -324,6 +341,6 @@ if (document.querySelector("#create-pub-form")) {
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
-    window.location.href = base_url + "admin/dashboard.html";
+    window.location.href = base_url + "publicaciones/mi-contenido.html";
   });
 }

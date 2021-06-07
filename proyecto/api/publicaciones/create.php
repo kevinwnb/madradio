@@ -13,11 +13,6 @@ $msg = "";
 require "../../img_upload_script.php";
 require "../../audio_upload_script.php";
 
-if (!$status) {
-    echo json_encode(["status" => $status, "msg" => $msg]);
-    exit;
-}
-
 // Agarramos el json de la solicitud recibida
 $json = $_POST["json"];
 
@@ -33,22 +28,24 @@ require "../../db_conexion.php";
 
 // preparamos y adjuntamos los parámetros
 $stmt = $link->prepare("INSERT INTO publicaciones (titulo, descripcion, etiquetas, id_categoria, id_genero, id_usuario, url_imagen, url_audio, fecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssiiisss", $titulo, $descripcion, $etiquetas, $id_categoria, $id_genero, $_SESSION["id_usuario"], $target_file_image, $target_file_audio, $fecha);
+$stmt->bind_param("sssiiisss", $titulo, $descripcion, $etiquetas, $id_categoria, $id_genero, $_SESSION["id_usuario"], $url_imagen, $url_audio, $fecha);
 
 $titulo = $data->titulo;
 $descripcion = $data->descripcion;
 $etiquetas = $data->etiquetas;
 $id_categoria = intval($data->id_categoria);
 $id_genero = intval($data->id_genero);
+$url_imagen = $target_file_image;
+$url_audio = $target_file_audio;
 $fecha = date('Y-m-d');
 
 // ejecutamos
 $stmt->execute();
 
 if ($stmt->affected_rows <= 0) {
+    echo json_encode(["status" => false, "msg" => "No se ha creado la publicación"]);
     $stmt->close();
     $link->close();
-    echo json_encode(["status" => false, "msg" => "No se ha creado la publicación"]);
     exit;
 }
 
