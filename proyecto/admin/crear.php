@@ -7,8 +7,7 @@
 
     <title>Añadir Usuario</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles.css">
 
 </head>
@@ -18,31 +17,29 @@
     <div id="create-user-form" class="card mx-auto">
         <div class="card-body">
             <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nombre</label>
-                    <input type="email" class="form-control" id="nombre" aria-describedby="emailHelp"
-                        placeholder="Nombre">
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputEmail1">Nombre</label>
+                    <input type="email" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Nombre">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                        placeholder="Email">
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
                     <small id="emailHelp" class="form-text text-muted">Respetamos tu privacidad, tu email no será
                         compartido con nadie.</small>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Role</label>
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputEmail1">Role</label>
                     <select id="select-role">
                         <option value="1" selected>Administrador</option>
                         <option value="2">Cliente</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Contraseña</label>
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputPassword1">Contraseña</label>
                     <input type="password" class="form-control" id="password" placeholder="Contraseña">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Repetir Contraseña</label>
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputPassword1">Repetir Contraseña</label>
                     <input type="password" class="form-control" id="repeat-password" placeholder="Repetir Contraseña">
                 </div>
                 <div class="text-center">
@@ -53,9 +50,7 @@
         </div>
     </div>
     <script src="../script.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 
 </html>

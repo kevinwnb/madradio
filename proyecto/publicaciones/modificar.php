@@ -3,44 +3,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-
+    <?php
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    require $root . "/head.php" ?>
     <title>Modificar Publicación</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles.css">
-
 </head>
 
 <body>
+    <?php $root = $_SERVER['DOCUMENT_ROOT'];
+    require $root . "/nav.php" ?>
+
     <h3 class="m-5 text-center">Modificar Publicación</h3>
     <div id="modify-pub-form" class="card mx-auto">
         <div class="card-body">
             <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Título</label>
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputEmail1">Título</label>
                     <input type="text" class="form-control" id="titulo" aria-describedby="Título" placeholder="Título">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Descripción</label>
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputEmail1">Descripción</label>
                     <textarea class="form-control" id="descripcion" placeholder="Descripción"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Etiquetas</label>
-                    <input type="text" class="form-control" id="etiquetas" aria-describedby="Etiquetas"
-                        placeholder="Música, POP, audio, ...">
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputEmail1">Etiquetas</label>
+                    <input type="text" class="form-control" id="etiquetas" aria-describedby="Etiquetas" placeholder="Música, POP, audio, ...">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Categoría</label>
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputEmail1">Categoría</label>
                     <select id="select-categoria">
                         <option selected>--Selecciona Categoría--</option>
                         <option value="1">Podcast</option>
                         <option value="2">Radio</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Género</label>
+                <div class="mb-3">
+                    <label class="form-label" for="exampleInputEmail1">Género</label>
                     <select id="select-genero">
                         <option selected>--Selecciona Género--</option>
                     </select>
@@ -48,12 +46,12 @@
                 <div class="bg-secondary rounded p-2">
                     <small class="text-warning">Si seleccionas una imágen o audio se reemplazarán los archivos
                         actuales</small>
-                    <div class="form-group">
-                        <label class="text-white" for="exampleInputPassword1">Reemplazar Imágen</label>
+                    <div class="mb-3">
+                        <label class="form-label" class="text-white" for="exampleInputPassword1">Reemplazar Imágen</label>
                         <input type="file" class="form-control" id="imagen">
                     </div>
-                    <div class="form-group">
-                        <label class="text-white" for="exampleInputPassword1">Reemplazar Audio</label>
+                    <div class="mb-3">
+                        <label class="form-label" class="text-white" for="exampleInputPassword1">Reemplazar Audio</label>
                         <input type="file" class="form-control" id="audio">
                     </div>
                 </div>
@@ -65,9 +63,7 @@
         </div>
     </div>
     <script src="../script.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 
 </html>
