@@ -1,12 +1,14 @@
 <?php
 header("Content-Type: application/json;charset=utf-8");
 
+$status = true;
 $target_dir_image = "";
+$file_name = "";
 
 if (!isset($_FILES["imagen"]) && !isset($data->id)) {
     $status = false;
     $msg = "No se ha proporcionado la imágen";
-} else {
+} else if (isset($_FILES["imagen"])) {
     $target_dir_image = realpath(dirname(__FILE__)) . "/uploads/imagenes/";
     $target_dir_image = str_replace('\\', '/', $target_dir_image);
     $file_name = uniqid() . "." . pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
@@ -46,4 +48,4 @@ if (!$status) {
     exit;
 }
 
-$target_file_image = "/uploads/imagenes/" . $file_name;
+$target_file_image = $file_name == "" ? "" : "/uploads/imagenes/" . $file_name;

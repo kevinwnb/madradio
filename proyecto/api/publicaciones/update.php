@@ -7,11 +7,6 @@ if (!isset($_SESSION['id_usuario'])) {
     exit;
 }
 
-$msg = "";
-
-require "../../img_upload_script.php";
-require "../../audio_upload_script.php";
-
 // Agarramos el json de la solicitud recibida
 $json = $_POST["json"];
 
@@ -22,6 +17,11 @@ if (empty($json)) {
 
 // Convertimos el json recibido a un objeto PHP
 $data = json_decode($json);
+
+$msg = "";
+
+require "../../img_upload_script.php";
+require "../../audio_upload_script.php";
 
 require "../../db_conexion.php";
 
@@ -34,9 +34,10 @@ $id = $data->id;
 $stmt->execute();
 $stmt->bind_result($url_imagen, $url_audio);
 $stmt->fetch();
+$stmt->close();
 
 // preparamos y adjuntamos los parámetros
-$stmt = $link->prepare("UPDATE publicaciones SET titulo = ?, descripcion = ?, etiquetas = ?, id_categoria = ?, id_genero = ?, url_imagen = ?, url_audio = ?, WHERE id = ?");
+$stmt = $link->prepare("UPDATE publicaciones SET titulo = ?, descripcion = ?, etiquetas = ?, id_categoria = ?, id_genero = ?, url_imagen = ?, url_audio = ? WHERE id = ?");
 $stmt->bind_param("sssiissi", $titulo, $descripcion, $etiquetas, $id_categoria, $id_genero, $new_url_imagen, $new_url_audio, $id);
 
 $titulo = $data->titulo;
@@ -52,9 +53,9 @@ $id = $data->id;
 $stmt->execute();
 
 if ($stmt->affected_rows <= 0) {
+    echo json_encode(["status" => false, "msg" => "No se ha actualizado la publicación"]);
     $stmt->close();
     $link->close();
-    echo json_encode(["status" => false, "msg" => "No se ha actualizado la publicación"]);
     exit;
 }
 

@@ -344,3 +344,86 @@ if (document.querySelector("#create-pub-form")) {
     window.location.href = base_url + "publicaciones/mi-contenido.html";
   });
 }
+
+// Modificar Publicación
+if (document.querySelector("#modify-pub-form")) {
+  let url_string = window.location.href;
+  let url = new URL(url_string);
+  let id = url.searchParams.get("id");
+
+  let id_categoria = null;
+  let id_genero = null;
+
+  fetch(api_base_url + "api/publicaciones/read.php?id=" + id)
+    .then((res) => res.json())
+    .then((data) => {
+      document.querySelector("#titulo").value = data.titulo;
+      document.querySelector("#descripcion").value = data.descripcion;
+      document.querySelector("#etiquetas").value = data.etiquetas;
+      id_categoria = data.id_categoria;
+      id_genero = data.id_genero;
+    });
+
+  fetch(api_base_url + "api/categorias/all.php")
+    .then((res) => res.json())
+    .then((data) => {
+      data.categorias.forEach((item) => {
+        var option = document.createElement("option");
+        option.value = item.id;
+        option.innerText = item.nombre;
+        if (item.id == id_categoria) {
+          option.selected = "selected";
+        }
+        document.querySelector("#select-categoria").appendChild(option);
+      });
+    });
+
+  fetch(api_base_url + "api/generos/all.php")
+    .then((res) => res.json())
+    .then((data) => {
+      data.generos.forEach((item) => {
+        var option = document.createElement("option");
+        option.value = item.id;
+        option.innerText = item.nombre;
+        if (item.id == id_genero) {
+          option.selected = "selected";
+        }
+        document.querySelector("#select-genero").appendChild(option);
+      });
+    });
+
+  document.querySelector("#modify-btn").addEventListener("click", function () {
+    let formData = new FormData();
+    formData.append(
+      "json",
+      JSON.stringify({
+        id: id,
+        titulo: document.querySelector("#titulo").value,
+        descripcion: document.querySelector("#descripcion").value,
+        etiquetas: document.querySelector("#etiquetas").value,
+        id_categoria: document.querySelector("#select-categoria").value,
+        id_genero: document.querySelector("#select-genero").value,
+      })
+    );
+
+    formData.append("imagen", document.querySelector("#imagen").files[0]);
+    formData.append("audio", document.querySelector("#audio").files[0]);
+
+    fetch(api_base_url + "api/publicaciones/update.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status) {
+          window.location.href = base_url + "publicaciones/mi-contenido.html";
+        } else {
+          alert(data.msg);
+        }
+      });
+  });
+
+  document.querySelector("#cancel-btn").addEventListener("click", function () {
+    window.location.href = base_url + "publicaciones/mi-contenido.html";
+  });
+}

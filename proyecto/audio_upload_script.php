@@ -1,12 +1,14 @@
 <?php
 header("Content-Type: application/json;charset=utf-8");
 
+$status = true;
 $target_dir_audio = "";
+$file_name = "";
 
 if (!isset($_FILES["audio"]) && !isset($data->id)) {
     $status = false;
     $msg = "No se ha proporcionado el audio";
-} else {
+} else if (isset($_FILES["audio"])) {
     $target_dir_audio = realpath(dirname(__FILE__)) . "/uploads/audio/";
     $target_dir_audio = str_replace('\\', '/', $target_dir_audio);
     $file_name = uniqid() . "." . pathinfo($_FILES["audio"]["name"], PATHINFO_EXTENSION);
@@ -24,4 +26,4 @@ if (!$status) {
     exit;
 }
 
-$target_file_audio = "/uploads/audio/" . $file_name;
+$target_file_audio = $file_name == "" ? "" : "/uploads/audio/" . $file_name;
