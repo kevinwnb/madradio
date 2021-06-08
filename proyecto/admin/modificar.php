@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">Role</label>
-                    <select id="select-role">
+                    <select id="select-role" class="form-control">
 
                     </select>
                 </div>

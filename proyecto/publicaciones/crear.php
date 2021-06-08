@@ -39,7 +39,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">Género</label>
-                    <select id="select-genero">
+                    <select id="select-genero" class="form-control">
                         <option selected>--Selecciona Género--</option>
                     </select>
                 </div>

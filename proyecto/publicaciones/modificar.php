@@ -31,7 +31,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">Categoría</label>
-                    <select id="select-categoria">
+                    <select class="form-control" id="select-categoria">
                         <option selected>--Selecciona Categoría--</option>
                         <option value="1">Podcast</option>
                         <option value="2">Radio</option>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">Género</label>
-                    <select id="select-genero">
+                    <select class="form-control" id="select-genero">
                         <option selected>--Selecciona Género--</option>
                     </select>
                 </div>

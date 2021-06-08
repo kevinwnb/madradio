@@ -4,10 +4,36 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-div.card {
+div.card:not(.pub) {
   max-width: 18rem;
 }
 
 div#create-pub-form {
   max-width: 36rem;
+}
+
+div#bg-explorar {
+  background-color: #eee;
+}
+
+div#pub-img-wrapper {
+  width: 100%;
+  padding-top: 100%;
+  background-color: black;
+  position: relative;
+}
+
+div#pub-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+div#bg-explorar h2 {
+  color: #505050;
 }

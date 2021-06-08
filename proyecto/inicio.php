@@ -14,7 +14,7 @@
   require $root . "/nav.php" ?>
 
   <div class="container-fluid">
-    <div class="row align-items-md mt-4 border">
+    <div class="row align-items-center mt-4 border">
       <div class="col-md-6">
         <div class="h-100 p-5 bg-light rounded-3">
           <h3>MadRadio</h3>

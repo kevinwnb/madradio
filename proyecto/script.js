@@ -118,21 +118,6 @@ if (document.querySelector("#admin-confirm-delete-user")) {
     });
 }
 
-// Eliminar Usuario
-if (document.querySelector("#admin-confirm-delete-user")) {
-  document
-    .querySelector("#admin-confirm-delete-user")
-    .addEventListener("click", function () {
-      fetch(
-        api_base_url +
-          "api/admin/usuarios/delete.php?id=" +
-          document.querySelector("#admin-confirm-delete-user").dataset.idusuario
-      )
-        .then((res) => res.json())
-        .then((data) => window.location.reload());
-    });
-}
-
 // Modificar Usuario
 if (document.querySelector("#modify-user-form")) {
   let url_string = window.location.href;

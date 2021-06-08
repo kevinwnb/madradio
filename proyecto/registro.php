@@ -13,6 +13,7 @@
     <?php $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . "/nav.php" ?>
 
+    <h3 class="m-5 text-center">Registro</h3>
     <div id="login-form" class="card mx-auto">
         <div class="card-body">
             <form>
