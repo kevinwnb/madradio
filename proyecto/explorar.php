@@ -57,7 +57,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                             <source src="<?php echo $p->url_audio ?>" type="audio/<?php echo substr($p->url_audio, -3) ?>">
                             Your browser does not support the audio element.
                         </audio>
-                        <a onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
+                        <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
                             <i class="fas fa-play"></i> Reproducir
                         </a>
                     </div>
@@ -101,7 +101,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                                     <source src="<?php echo $p->url_audio ?>" type="audio/<?php echo substr($p->url_audio, -3) ?>">
                                     Your browser does not support the audio element.
                                 </audio>
-                                <a onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
+                                <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
                                     <i class="fas fa-play"></i> Reproducir
                                 </a>
 
@@ -117,6 +117,10 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
     <script>
         <?php echo "
             function play(id){
+                document.querySelectorAll('.a-reproducir').forEach(e => e.classList.remove('reproduciendo'));
+                document.querySelector('#btn-'+id.toString()).classList.add('reproduciendo');
+                var sounds = document.getElementsByTagName('audio');
+                for(i=0; i<sounds.length; i++) sounds[i].pause();
                 var audio = document.getElementById(id);
                 if(!audio.paused){
                     audio.pause();

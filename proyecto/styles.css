@@ -45,3 +45,7 @@ div#bg-explorar .a-reproducir {
   text-decoration: none;
   display: block;
 }
+
+a.reproduciendo {
+  background-color: red !important;
+}
