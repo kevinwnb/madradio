@@ -37,3 +37,11 @@ div#pub-img-wrapper img {
 div#bg-explorar h2 {
   color: #505050;
 }
+
+div#bg-explorar .a-reproducir {
+  font-size: 1rem;
+  font-weight: bolder;
+  color: #505050;
+  text-decoration: none;
+  display: block;
+}
