@@ -47,7 +47,8 @@ div#bg-explorar .a-reproducir {
 }
 
 a.reproduciendo {
-  background-color: red !important;
+  background-color: firebrick !important;
+  color: rgba(0, 0, 0, 0.5) !important;
 }
 
 a.reproduciendo .fa-play {
