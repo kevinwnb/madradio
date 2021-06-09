@@ -117,16 +117,22 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
     <script>
         <?php echo "
             function play(id){
-                document.querySelectorAll('.a-reproducir').forEach(e => e.classList.remove('reproduciendo'));
-                document.querySelector('#btn-'+id.toString()).classList.add('reproduciendo');
-                var sounds = document.getElementsByTagName('audio');
-                for(i=0; i<sounds.length; i++) sounds[i].pause();
-                var audio = document.getElementById(id);
-                if(!audio.paused){
-                    audio.pause();
+                if(!document.querySelector('#btn-'+id.toString()).classList.contains('reproduciendo')) {
+                    document.querySelectorAll('.a-reproducir').forEach(e => e.classList.remove('reproduciendo'));
+                    document.querySelector('#btn-'+id.toString()).classList.add('reproduciendo');
+                    var sounds = document.getElementsByTagName('audio');
+                    for(i=0; i<sounds.length; i++) sounds[i].pause();
+                    let audio = document.getElementById(id);
+                    audio.play();
                 }
                 else {
-                    audio.play();
+                    let audio = document.getElementById(id);
+                    if(!audio.paused){
+                        audio.pause();
+                    }
+                    else {
+                        audio.play();
+                    }
                 }
             }
             " ?>
