@@ -58,7 +58,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                             Your browser does not support the audio element.
                         </audio>
                         <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
-                            <i class="fas fa-play"></i> Reproducir
+                            <i class="fas fa-play"></i><i class="fas fa-pause"></i> Reproducir
                         </a>
                     </div>
                 <?php
@@ -102,7 +102,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                                     Your browser does not support the audio element.
                                 </audio>
                                 <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
-                                    <i class="fas fa-play"></i> Reproducir
+                                    <i class="fas fa-play"></i><i class="fas fa-pause"></i> Reproducir
                                 </a>
 
                             </div>
@@ -118,7 +118,9 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
         <?php echo "
             function play(id){
                 if(!document.querySelector('#btn-'+id.toString()).classList.contains('reproduciendo')) {
-                    document.querySelectorAll('.a-reproducir').forEach(e => e.classList.remove('reproduciendo'));
+                    document.querySelectorAll('.a-reproducir').forEach(e => {
+                        e.classList.remove('reproduciendo')
+                    });
                     document.querySelector('#btn-'+id.toString()).classList.add('reproduciendo');
                     var sounds = document.getElementsByTagName('audio');
                     for(i=0; i<sounds.length; i++) sounds[i].pause();
@@ -129,9 +131,11 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                     let audio = document.getElementById(id);
                     if(!audio.paused){
                         audio.pause();
+                        document.querySelector('#btn-'+id.toString()).classList.remove('reproduciendo');
                     }
                     else {
                         audio.play();
+                        document.querySelector('#btn-'+id.toString()).classList.add('reproduciendo');
                     }
                 }
             }

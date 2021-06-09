@@ -49,3 +49,19 @@ div#bg-explorar .a-reproducir {
 a.reproduciendo {
   background-color: red !important;
 }
+
+a.reproduciendo .fa-play {
+  display: none;
+}
+
+a:not(.reproduciendo) .fa-play {
+  display: inline;
+}
+
+a.reproduciendo .fa-pause {
+  display: inline;
+}
+
+a:not(.reproduciendo) .fa-pause {
+  display: none;
+}
