@@ -58,7 +58,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                             Your browser does not support the audio element.
                         </audio>
                         <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
-                            <i class="fas fa-play"></i><i class="fas fa-pause"></i> Reproducir
+                            <i class="fas fa-play"></i><i class="fas fa-pause"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
                         </a>
                     </div>
                 <?php
@@ -102,7 +102,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                                     Your browser does not support the audio element.
                                 </audio>
                                 <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
-                                    <i class="fas fa-play"></i><i class="fas fa-pause"></i> Reproducir
+                                    <i class="fas fa-play"></i><i class="fas fa-pause"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
                                 </a>
 
                             </div>

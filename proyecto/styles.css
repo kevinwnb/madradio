@@ -46,23 +46,39 @@ div#bg-explorar .a-reproducir {
   display: block;
 }
 
-a.reproduciendo {
+.a-reproducir.reproduciendo {
   background-color: firebrick !important;
   color: rgba(0, 0, 0, 0.5) !important;
 }
 
-a.reproduciendo .fa-play {
+.a-reproducir.reproduciendo .fa-play {
   display: none;
 }
 
-a:not(.reproduciendo) .fa-play {
+.a-reproducir:not(.reproduciendo) .fa-play {
   display: inline;
 }
 
-a.reproduciendo .fa-pause {
+.a-reproducir.reproduciendo .fa-pause {
   display: inline;
 }
 
-a:not(.reproduciendo) .fa-pause {
+.a-reproducir:not(.reproduciendo) .fa-pause {
+  display: none;
+}
+
+.a-reproducir.reproduciendo #spn-reproducir {
+  display: none;
+}
+
+.a-reproducir.reproduciendo #spn-pausar {
+  display: inline;
+}
+
+.a-reproducir:not(.reproduciendo) #spn-reproducir {
+  display: inline;
+}
+
+.a-reproducir:not(.reproduciendo) #spn-pausar {
   display: none;
 }

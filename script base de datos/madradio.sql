@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2021 at 07:08 AM
+-- Generation Time: Jun 09, 2021 at 10:59 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -74,19 +74,12 @@ INSERT INTO `generos` (`id`, `nombre`) VALUES
 (2, 'Jazz'),
 (3, 'Rock'),
 (4, 'Punk'),
-(5, 'Rap');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `imagenes`
---
-
-CREATE TABLE `imagenes` (
-  `id` int(11) NOT NULL,
-  `url` varchar(100) NOT NULL,
-  `id_publicacion` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(5, 'Rap'),
+(6, 'Entretenimiento'),
+(7, 'Conversacional'),
+(8, 'Formación'),
+(9, 'Investigación'),
+(10, 'Periodístico');
 
 -- --------------------------------------------------------
 
@@ -102,6 +95,8 @@ CREATE TABLE `publicaciones` (
   `id_categoria` int(11) NOT NULL,
   `id_genero` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
+  `url_imagen` varchar(100) NOT NULL,
+  `url_audio` varchar(100) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -109,8 +104,15 @@ CREATE TABLE `publicaciones` (
 -- Dumping data for table `publicaciones`
 --
 
-INSERT INTO `publicaciones` (`id`, `titulo`, `descripcion`, `etiquetas`, `id_categoria`, `id_genero`, `id_usuario`, `fecha`) VALUES
-(1, 'Publicación 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Rock, rock, Musica, musica', 2, 3, 1, '2021-06-04');
+INSERT INTO `publicaciones` (`id`, `titulo`, `descripcion`, `etiquetas`, `id_categoria`, `id_genero`, `id_usuario`, `url_imagen`, `url_audio`, `fecha`) VALUES
+(26, 'faxa', 'faxa', 'faxa', 2, 1, 7, '/uploads/imagenes/', '/uploads/audio/', '2021-06-07'),
+(27, 'asdf', 'asdf', 'asdf', 2, 5, 7, 'back-end/uploads/imagenes/60be4188566ea.jpg', 'back-end/uploads/audio/60be41885f1f3.mp3', '2021-06-07'),
+(28, 'aa', 'aa', 'aa', 1, 3, 7, 'back-end/uploads/imagenes/60be4265563b7.jpg', 'back-end/uploads/audio/60be42655b15c.mp3', '2021-06-07'),
+(29, 'bb', 'bb', 'bb', 1, 1, 7, 'back-end/uploads/imagenes/60be42b630250.jpg', 'back-end/uploads/audio/60be42b630e6f.mp3', '2021-06-07'),
+(30, 'ffd', 'ffd', 'ffd', 1, 1, 7, '/uploads/imagenes/', '/uploads/audio/', '2021-06-07'),
+(31, 'af', 'af', 'afdf', 2, 1, 7, '/uploads/imagenes/60bee05cbfd61.jpg', '/uploads/audio/60bee00245797.mp3', '2021-06-08'),
+(32, 'da', 'da', 'da', 1, 1, 7, '/uploads/imagenes/60c0106038c7a.jpg', '/uploads/audio/60c01060404c1.mp3', '2021-06-09'),
+(33, 't', 't', 't', 2, 3, 7, '/uploads/imagenes/60c01a047c700.jpg', '/uploads/audio/60c01a047d900.mp3', '2021-06-09');
 
 -- --------------------------------------------------------
 
@@ -128,7 +130,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `role`) VALUES
-(1, 'Administrador');
+(1, 'Administrador'),
+(2, 'Cliente');
 
 -- --------------------------------------------------------
 
@@ -140,7 +143,7 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` text NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -149,7 +152,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `role_id`) VALUES
-(1, '', 'administrador@mail.com', '123456', 1);
+(6, 'Nico', 'nico@mail.com', '$2y$10$hYm1Nomxe1./Y44CweXme.NGJL5suwqSzv92zdEdKdKytsZyHAnse', 2),
+(7, 'Mario', 'mario@mail.com', '$2y$10$IAo7ZZTqdLjALEMkmLJY7eOzKgcCsst.lqkXdk804vDsGq66Z0qry', 1);
 
 --
 -- Indexes for dumped tables
@@ -174,13 +178,6 @@ ALTER TABLE `comentarios`
 --
 ALTER TABLE `generos`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `imagenes`
---
-ALTER TABLE `imagenes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_publicacion` (`id_publicacion`);
 
 --
 -- Indexes for table `publicaciones`
@@ -224,31 +221,25 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `imagenes`
---
-ALTER TABLE `imagenes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -260,12 +251,6 @@ ALTER TABLE `usuarios`
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_publicacion`) REFERENCES `publicaciones` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `imagenes`
---
-ALTER TABLE `imagenes`
-  ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`id_publicacion`) REFERENCES `publicaciones` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `publicaciones`
