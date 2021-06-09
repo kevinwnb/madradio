@@ -14,7 +14,7 @@ if (document.querySelector("#login-btn")) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          window.location.replace(base_url + "inicio.html");
+          window.location.replace(base_url + "inicio.php");
         } else {
           alert(data.msg);
         }
@@ -40,7 +40,7 @@ if (document.querySelector("#register-btn")) {
         .then((data) => {
           if (data.status) {
             alert(data.msg);
-            window.location.replace(base_url + "login.html");
+            window.location.replace(base_url + "login.php");
           } else {
             alert(data.msg);
           }
@@ -67,7 +67,7 @@ if (document.querySelector("#tabla-usuarios")) {
           td_email.innerText = item.email;
           td_role.innerText = item.role;
           var a = document.createElement("a");
-          a.href = "modificar.html?id=" + item.id;
+          a.href = "modificar.php?id=" + item.id;
           a.innerText = "Modificar";
           a.classList.add("m-2");
           td_acciones.appendChild(a);
@@ -99,7 +99,7 @@ if (document.querySelector("#tabla-usuarios")) {
     });
 
   document.querySelector("#crear-btn").addEventListener("click", function () {
-    window.location.href(base_url + "admin/crear.html");
+    window.location.href(base_url + "admin/crear.php");
   });
 }
 
@@ -164,7 +164,7 @@ if (document.querySelector("#modify-user-form")) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          window.location.href = base_url + "admin/dashboard.html";
+          window.location.href = base_url + "admin/dashboard.php";
         } else {
           alert(data.msg);
         }
@@ -172,7 +172,7 @@ if (document.querySelector("#modify-user-form")) {
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
-    window.location.href = base_url + "admin/dashboard.html";
+    window.location.href = base_url + "admin/dashboard.php";
   });
 }
 
@@ -192,7 +192,7 @@ if (document.querySelector("#create-user-form")) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          window.location.href = base_url + "admin/dashboard.html";
+          window.location.href = base_url + "admin/dashboard.php";
         } else {
           alert(data.msg);
         }
@@ -200,7 +200,7 @@ if (document.querySelector("#create-user-form")) {
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
-    window.location.href = base_url + "admin/dashboard.html";
+    window.location.href = base_url + "admin/dashboard.php";
   });
 }
 
@@ -228,7 +228,7 @@ if (document.querySelector("#tabla-publicaciones-usuario")) {
           td_titulo.innerText = item.titulo;
           td_fecha.innerText = item.fecha;
           var a = document.createElement("a");
-          a.href = "modificar.html?id=" + item.id;
+          a.href = "modificar.php?id=" + item.id;
           a.innerText = "Modificar";
           a.classList.add("m-2");
           td_acciones.appendChild(a);
@@ -261,7 +261,7 @@ if (document.querySelector("#tabla-publicaciones-usuario")) {
     });
 
   document.querySelector("#crear-btn").addEventListener("click", function () {
-    window.location.href(base_url + "admin/crear.html");
+    window.location.href(base_url + "admin/crear.php");
   });
 }
 
@@ -318,7 +318,7 @@ if (document.querySelector("#create-pub-form")) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          window.location.href = base_url + "publicaciones/mi-contenido.html";
+          window.location.href = base_url + "publicaciones/mi-contenido.php";
         } else {
           alert(data.msg);
         }
@@ -326,7 +326,7 @@ if (document.querySelector("#create-pub-form")) {
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
-    window.location.href = base_url + "publicaciones/mi-contenido.html";
+    window.location.href = base_url + "publicaciones/mi-contenido.php";
   });
 }
 
@@ -401,7 +401,7 @@ if (document.querySelector("#modify-pub-form")) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          window.location.href = base_url + "publicaciones/mi-contenido.html";
+          window.location.href = base_url + "publicaciones/mi-contenido.php";
         } else {
           alert(data.msg);
         }
@@ -409,6 +409,6 @@ if (document.querySelector("#modify-pub-form")) {
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
-    window.location.href = base_url + "publicaciones/mi-contenido.html";
+    window.location.href = base_url + "publicaciones/mi-contenido.php";
   });
 }

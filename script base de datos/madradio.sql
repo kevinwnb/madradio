@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2021 at 10:59 PM
+-- Generation Time: Jun 10, 2021 at 12:47 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -79,7 +79,9 @@ INSERT INTO `generos` (`id`, `nombre`) VALUES
 (7, 'Conversacional'),
 (8, 'Formación'),
 (9, 'Investigación'),
-(10, 'Periodístico');
+(10, 'Periodístico'),
+(11, 'Reggaeton'),
+(12, 'Popular');
 
 -- --------------------------------------------------------
 
@@ -105,14 +107,10 @@ CREATE TABLE `publicaciones` (
 --
 
 INSERT INTO `publicaciones` (`id`, `titulo`, `descripcion`, `etiquetas`, `id_categoria`, `id_genero`, `id_usuario`, `url_imagen`, `url_audio`, `fecha`) VALUES
-(26, 'faxa', 'faxa', 'faxa', 2, 1, 7, '/uploads/imagenes/', '/uploads/audio/', '2021-06-07'),
-(27, 'asdf', 'asdf', 'asdf', 2, 5, 7, 'back-end/uploads/imagenes/60be4188566ea.jpg', 'back-end/uploads/audio/60be41885f1f3.mp3', '2021-06-07'),
-(28, 'aa', 'aa', 'aa', 1, 3, 7, 'back-end/uploads/imagenes/60be4265563b7.jpg', 'back-end/uploads/audio/60be42655b15c.mp3', '2021-06-07'),
-(29, 'bb', 'bb', 'bb', 1, 1, 7, 'back-end/uploads/imagenes/60be42b630250.jpg', 'back-end/uploads/audio/60be42b630e6f.mp3', '2021-06-07'),
-(30, 'ffd', 'ffd', 'ffd', 1, 1, 7, '/uploads/imagenes/', '/uploads/audio/', '2021-06-07'),
-(31, 'af', 'af', 'afdf', 2, 1, 7, '/uploads/imagenes/60bee05cbfd61.jpg', '/uploads/audio/60bee00245797.mp3', '2021-06-08'),
-(32, 'da', 'da', 'da', 1, 1, 7, '/uploads/imagenes/60c0106038c7a.jpg', '/uploads/audio/60c01060404c1.mp3', '2021-06-09'),
-(33, 't', 't', 't', 2, 3, 7, '/uploads/imagenes/60c01a047c700.jpg', '/uploads/audio/60c01a047d900.mp3', '2021-06-09');
+(34, 'Ritmo - J Balvin', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu', 'musica, jbalvin', 2, 1, 13, '/uploads/imagenes/60c13d1941889.jpg', '/uploads/audio/60c13d19426ff.mp3', '2021-06-10'),
+(35, 'Todo de Tí - Rauw Alejandro', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu', 'musica, rauw, alejandro, rauw alejandro', 2, 12, 14, '/uploads/imagenes/60c143a8582b2.jpg', '/uploads/audio/60c143a858e7e.mp3', '2021-06-10'),
+(36, 'Yonaguni - Bad Bunny', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu', 'musica, bad bunny, yonaguni', 2, 12, 7, '/uploads/imagenes/60c14406b50ee.jpg', '/uploads/audio/60c14406b5e5f.mp3', '2021-06-10'),
+(37, 'Ram Pam Pam - Natti Natasha', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu', 'musica, natti, natasha, ram pam pam', 2, 11, 12, '/uploads/imagenes/60c14479aba63.png', '/uploads/audio/60c14479ac782.mp3', '2021-06-10');
 
 -- --------------------------------------------------------
 
@@ -152,8 +150,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `role_id`) VALUES
-(6, 'Nico', 'nico@mail.com', '$2y$10$hYm1Nomxe1./Y44CweXme.NGJL5suwqSzv92zdEdKdKytsZyHAnse', 2),
-(7, 'Mario', 'mario@mail.com', '$2y$10$IAo7ZZTqdLjALEMkmLJY7eOzKgcCsst.lqkXdk804vDsGq66Z0qry', 1);
+(6, 'Antonio Garnica', 'antoniogarnica@mail.com', '$2y$10$hYm1Nomxe1./Y44CweXme.NGJL5suwqSzv92zdEdKdKytsZyHAnse', 2),
+(7, 'Mario Gonzalez', 'mariogonzalez@mail.com', '$2y$10$IAo7ZZTqdLjALEMkmLJY7eOzKgcCsst.lqkXdk804vDsGq66Z0qry', 1),
+(12, 'Pedro Dafonte', 'pedrodafonte@mail.com', '$2y$10$XhrozptVm1Ls2R7bpDKqpO4G4ccA5afbfhUiz.Xbbw6l/dJ.fT0ka', 2),
+(13, 'Alfonso Rodriguez', 'alfonsorodriguez@mail.com', '$2y$10$Ah4NDEWQPKZzhmYo.QpFHur2.S.ieVPh4yJr/0pMpfR3tbIDP//TC', 2),
+(14, 'Fran Fernandez', 'franfernandez@mail.com', '$2y$10$8Orn4tLcCNx4MOtF9VEGpOtWdF5oe7zvpFrCxbsrrErNzVSBz.RWu', 2);
 
 --
 -- Indexes for dumped tables
@@ -221,13 +222,13 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -239,7 +240,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
