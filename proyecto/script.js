@@ -48,6 +48,15 @@ if (document.querySelector("#register-btn")) {
     });
 }
 
+//Logout
+if (document.querySelector("#btn-salir")) {
+  document.querySelector("#btn-salir").addEventListener("click", function () {
+    fetch(base_url + "api/logout.php")
+      .then((res) => res.json())
+      .then((data) => window.location.replace(base_url + "inicio.php"));
+  });
+}
+
 // Mostrar Usuarios
 if (document.querySelector("#tabla-usuarios")) {
   fetch(api_base_url + "api/admin/usuarios/all.php")

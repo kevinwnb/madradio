@@ -1,42 +1,61 @@
+<?php session_start() ?>
 <div class="d-flex justify-content-end bg-dark p-3">
     <div class="botones">
         <a href="/publicaciones/crear.php" type="button" class="btn btn-outline-warning" id="boton-subir"><i class="fas fa-microphone"></i> Subir</a>
-        <a href="/login.php" type="button" class="btn btn-outline-success"><i class="fas fa-sign-in-alt"></i> Acceder</a>
-        <a href="/registro.php" type="button" class="btn btn-outline-light"><i class="fas fa-user-plus"></i> Crear Cuenta</a>
+        <?php
+        if (!isset($_SESSION["id_usuario"])) {
+        ?>
+            <a href="/login.php" type="button" class="btn btn-outline-success"><i class="fas fa-sign-in-alt"></i> Acceder</a>
+            <a href="/registro.php" type="button" class="btn btn-outline-light"><i class="fas fa-user-plus"></i> Crear Cuenta</a>
+        <?php
+        }
+        ?>
+        <?php
+        if (isset($_SESSION["id_usuario"])) {
+        ?>
+            <a href="javascript:void(0)" id="btn-salir" class="btn btn-outline-danger">Salir <i class="fas fa-sign-out-alt"></i></a>
+        <?php
+        }
+        ?>
     </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img id="logo" src="imagenes/Mad radio sin circulo negro.png" ALT="Logo-MadRadio"></a>
+        <a class="navbar-brand" href="/inicio.php"><img id="logo" src="imagenes/Mad radio sin circulo negro.png" ALT="Logo-MadRadio"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="/inicio.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Explorar</a>
+                    <a class="nav-link" href="/explorar.php">Explorar</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        Géneros
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <p class="category-title">Radio</p>
+                        </li>
+                        <li><a class="dropdown-item" href="#">POP</a></li>
+                        <li><a class="dropdown-item" href="#">Rock</a></li>
+                        <li><a class="dropdown-item" href="#">Popular</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <p>Podcasts</p>
+                            <p class="category-title">Podcasts</p>
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">Investigación</a></li>
+                        <li><a class="dropdown-item" href="#">Informativo</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
+                    <a class="nav-link" href="/contacto.php">Contacto</a>
                 </li>
             </ul>
             <form class="d-flex">
