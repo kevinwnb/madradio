@@ -13,7 +13,7 @@ div#create-pub-form {
 }
 
 div.bg {
-  background-color: #eee;
+  background-color: #e1e1e1;
 }
 
 form.card {
@@ -97,10 +97,6 @@ form#contacto {
 
 form#login-form {
   max-width: 18rem;
-}
-
-.navbar ul li a {
-  white-space: nowrap;
 }
 
 #logo {

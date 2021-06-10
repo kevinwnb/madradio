@@ -1,17 +1,29 @@
-<?php session_start() ?>
+<?php session_start();
+require "base_url.php";
+?>
+
 <div class="d-flex justify-content-end bg-dark p-3">
     <div class="botones">
-        <a href="/publicaciones/crear.php" type="button" class="btn btn-outline-warning" id="boton-subir"><i class="fas fa-microphone"></i> Subir</a>
+        <p class="d-inline text-secondary btn bg-dark m-0">
+            <?php
+            if (isset($_SESSION["id_usuario"])) {
+                $user = json_decode(file_get_contents($base_url . "/api/usuarios/read.php?id=" . $_SESSION["id_usuario"]));
+                echo "Bienvenido " . strtok($user->nombre, ' ');
+            }
+            ?>
+        </p>
+        <a href="/publicaciones/crear.php" type="button" class="btn btn-warning" id="boton-subir"><i class="fas fa-microphone"></i> Subir</a>
         <?php
         if (!isset($_SESSION["id_usuario"])) {
         ?>
-            <a href="/login.php" type="button" class="btn btn-outline-success"><i class="fas fa-sign-in-alt"></i> Acceder</a>
-            <a href="/registro.php" type="button" class="btn btn-outline-light"><i class="fas fa-user-plus"></i> Crear Cuenta</a>
+            <a href="/login.php" type="button" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Acceder</a>
+            <a href="/registro.php" type="button" class="btn btn-light"><i class="fas fa-user-plus"></i> Crear Cuenta</a>
         <?php
         }
         ?>
         <?php
         if (isset($_SESSION["id_usuario"])) {
+
         ?>
             <a href="javascript:void(0)" id="btn-salir" class="btn btn-outline-danger">Salir <i class="fas fa-sign-out-alt"></i></a>
         <?php
