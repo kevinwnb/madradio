@@ -12,6 +12,9 @@
   <?php
   $root = $_SERVER['DOCUMENT_ROOT'];
   require $root . "/nav.php" ?>
+  <script>
+    document.querySelector(".navbar li a#inicio").classList.add("active");
+  </script>
 
   <div class="container-fluid">
     <div class="row align-items-center mt-4 border">

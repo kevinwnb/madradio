@@ -4,14 +4,6 @@ require "base_url.php";
 
 <div class="d-flex justify-content-end bg-dark p-3">
     <div class="botones w-100 w-sm-auto text-end">
-        <p class="d-block d-sm-inline-block text-secondary btn bg-dark m-0">
-            <?php
-            if (isset($_SESSION["id_usuario"])) {
-                $user = json_decode(file_get_contents($base_url . "/api/usuarios/read.php?id=" . $_SESSION["id_usuario"]));
-                echo "Bienvenido " . strtok($user->nombre, ' ');
-            }
-            ?>
-        </p>
         <a href="/publicaciones/crear.php" class="d-block d-sm-inline-block btn btn-warning" id="boton-subir"><i class="fas fa-microphone"></i> Subir</a>
         <?php
         if (!isset($_SESSION["id_usuario"])) {
@@ -25,7 +17,24 @@ require "base_url.php";
         if (isset($_SESSION["id_usuario"])) {
 
         ?>
-            <a href="javascript:void(0)" id="btn-salir" class="d-block d-sm-inline-block btn btn-outline-danger">Salir <i class="fas fa-sign-out-alt"></i></a>
+            <div class="d-inline-block dropdown">
+                <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <?php
+                    $user = json_decode(file_get_contents($base_url . "/api/usuarios/read.php?id=" . $_SESSION["id_usuario"]));
+                    echo "Bienvenido " . strtok($user->nombre, ' '); ?>
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a href="javascript:void(0)" id="btn-salir" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+                    <li><a class="dropdown-item" href="/publicaciones/mi-contenido.php"><i class="fas fa-pencil-alt"></i> Mi Contenido</a></li>
+                    <?php if ($_SESSION["role_id"] == 1) {
+                    ?>
+                        <li><a class="dropdown-item" href="/admin/dashboard.php"><i class="fas fa-plus"></i> Administrar</a></li>
+                    <?php
+                    } ?>
+                </ul>
+            </div>
         <?php
         }
         ?>
@@ -40,34 +49,16 @@ require "base_url.php";
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/inicio.php">Inicio</a>
+                    <a id="inicio" class="nav-link" aria-current="page" href="/inicio.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/explorar.php">Explorar</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Géneros
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <p class="category-title">Radio</p>
-                        </li>
-                        <li><a class="dropdown-item" href="#">POP</a></li>
-                        <li><a class="dropdown-item" href="#">Rock</a></li>
-                        <li><a class="dropdown-item" href="#">Popular</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <p class="category-title">Podcasts</p>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Investigación</a></li>
-                        <li><a class="dropdown-item" href="#">Informativo</a></li>
-                    </ul>
+                    <a id="explorar" class="nav-link" href="/explorar.php">Explorar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contacto.php">Contacto</a>
+                    <a id="crear-podcast" class="nav-link" href="/crear-podcast.php">Crear Podcast</a>
+                </li>
+                <li class="nav-item">
+                    <a id="contacto" class="nav-link" href="/contacto.php">Contacto</a>
                 </li>
             </ul>
             <form class="d-flex">

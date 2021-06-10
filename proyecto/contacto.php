@@ -19,6 +19,9 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
     <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . "/nav.php" ?>
+    <script>
+        document.querySelector(".navbar li a#contacto").classList.add("active");
+    </script>
     <div class="bg p-1">
         <form id="contacto" class="bg-dark mx-auto my-5 p-4 card card-body">
             <h3 class="p-4 text-center text-white">Contacto</h3>

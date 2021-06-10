@@ -19,6 +19,9 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
     <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . "/nav.php" ?>
+    <script>
+        document.querySelector(".navbar li a#explorar").classList.add("active");
+    </script>
     <div id="bg-explorar" class="bg explorar pt-5 px-5">
         <section id="destacados">
             <h2 class="text-center pb-3">Destacados</h2>
