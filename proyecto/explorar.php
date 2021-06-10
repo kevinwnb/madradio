@@ -19,7 +19,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
     <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . "/nav.php" ?>
-    <div id="bg-explorar" class="explorar pt-5 px-5">
+    <div id="bg-explorar" class="bg explorar pt-5 px-5">
         <section id="destacados">
             <h2 class="text-center pb-3">Destacados</h2>
             <div class="row g-4 pb-5">
@@ -49,7 +49,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                             </div>
                             <h5 class="card-title pt-3"><?php echo $p->titulo ?></h5>
                             <p class="card-text">
-                                <?php echo $p->descripcion ?>
+                                <?php echo substr($p->descripcion, 0, 100) . "..." ?>
                             </p>
                         </div>
                         <?php $audio_id = uniqid(); ?>
@@ -58,7 +58,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                             Your browser does not support the audio element.
                         </audio>
                         <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
-                            <i class="fas fa-play"></i><i class="fas fa-pause"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
+                            <i class="fas fa-play"></i><i class="fas fa-stop"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
                         </a>
                     </div>
                 <?php
@@ -93,7 +93,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                                     </div>
                                     <h5 class="card-title pt-3"><?php echo $p->titulo ?></h5>
                                     <p class="card-text">
-                                        <?php echo $p->descripcion ?>
+                                        <?php echo substr($p->descripcion, 0, 100) ?>
                                     </p>
                                 </div>
                                 <?php $audio_id = uniqid(); ?>
@@ -102,7 +102,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                                     Your browser does not support the audio element.
                                 </audio>
                                 <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
-                                    <i class="fas fa-play"></i><i class="fas fa-pause"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
+                                    <i class="fas fa-play"></i><i class="fas fa-stop"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
                                 </a>
 
                             </div>
@@ -113,33 +113,46 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
         <?php } ?>
     </div>
 
+    <?php
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    require $root . "/footer.php" ?>
+
     <script src="script.js"></script>
     <script>
-        <?php echo "
-            function play(id){
-                if(!document.querySelector('#btn-'+id.toString()).classList.contains('reproduciendo')) {
-                    document.querySelectorAll('.a-reproducir').forEach(e => {
-                        e.classList.remove('reproduciendo')
-                    });
-                    document.querySelector('#btn-'+id.toString()).classList.add('reproduciendo');
-                    var sounds = document.getElementsByTagName('audio');
-                    for(i=0; i<sounds.length; i++) sounds[i].pause();
-                    let audio = document.getElementById(id);
+        document.querySelectorAll("audio").forEach(element => {
+            element.addEventListener("ended", function(e) {
+                document.querySelector("#btn-" + e.target.id).classList.remove("reproduciendo");
+            });
+        });
+
+        function stop(id) {
+            document.querySelector("#btn-" + id.toString()).classList.remove('reproduciendo');
+        }
+
+        function play(id) {
+            if (!document.querySelector('#btn-' + id.toString()).classList.contains('reproduciendo')) {
+                document.querySelectorAll('.a-reproducir').forEach(e => {
+                    e.classList.remove('reproduciendo')
+                });
+                document.querySelector('#btn-' + id.toString()).classList.add('reproduciendo');
+                var sounds = document.getElementsByTagName('audio');
+                for (i = 0; i < sounds.length; i++) {
+                    sounds[i].pause();
+                    sounds[i].currentTime = 0;
+                };
+                let audio = document.getElementById(id);
+                audio.play();
+            } else {
+                let audio = document.getElementById(id);
+                if (!audio.paused) {
+                    audio.pause();
+                    document.querySelector('#btn-' + id.toString()).classList.remove('reproduciendo');
+                } else {
                     audio.play();
-                }
-                else {
-                    let audio = document.getElementById(id);
-                    if(!audio.paused){
-                        audio.pause();
-                        document.querySelector('#btn-'+id.toString()).classList.remove('reproduciendo');
-                    }
-                    else {
-                        audio.play();
-                        document.querySelector('#btn-'+id.toString()).classList.add('reproduciendo');
-                    }
+                    document.querySelector('#btn-' + id.toString()).classList.add('reproduciendo');
                 }
             }
-            " ?>
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>

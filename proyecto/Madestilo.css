@@ -1,72 +1,58 @@
-#Logo-MadRadio{
-    margin-bottom:40px;
-    margin-left:20%;
+.campos {
+  padding-top: 20px;
+  height: 30%;
+  margin-left: 0.1px;
+  margin-right: 0.5px;
 }
 
-.campos{
-    padding-top:20px;
-    height:30%;
-    margin-left:0.10px;
-    margin-right:0.5px;
+.campos div button {
+  border: 1px solid black;
 }
 
-.campos div button{
-    border:1px solid black;
+.botones a {
+  border: none;
+  white-space: nowrap;
 }
 
-#boton-subir{
-    border:none;
+.navbar-nav {
+  /* border: 1px solid white; */
 }
 
-.navbar-nav{
-    border:1px solid white;
-    margin-top:7%;
+.boton-buscar {
+  padding-top: 10px;
 }
 
-.boton-buscar{
-    padding-top:10px;
+.navbar-nav .nav-link {
+  /* padding-right: 20px !important;
+  padding-left: 30px !important; */
+  margin: 0 1rem;
 }
 
-.btn-outline-success{
-    margin-top:10px !important;
+.botones2 ul li {
+  list-style: none;
 }
 
-.navbar-nav .nav-link{
-    padding-right:20px !important;
-    padding-left:30px !important;
+.testimonios > div > p {
+  width: 280px;
+  height: auto;
 }
 
-.botones2 ul li{
-    list-style:none;
+.buscador {
+  padding-right: 30px !important;
 }
 
-
-.testimonios > div > p{
-	width:280px;
-	height:auto;
+.footer {
+  height: auto;
 }
 
-.fas.fa-microphone{
-    color:white;
+/* @media (max-width: 1024px) {
+  .botones {
+    display: none;
+  }
 }
 
-
-.buscador{
-    padding-right:30px !important;
-}
-
-.footer{
-	height:auto;
-}
-
-@media (max-width:1024px){
-    .botones{
-        display: none;
-	}
-}
-
-@media (min-width:835px){
-     .botones2{
-       display:none;
-   }
-}
+@media (min-width: 835px) {
+  .botones2 {
+    display: none;
+  }
+} */

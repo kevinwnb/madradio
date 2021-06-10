@@ -12,8 +12,16 @@ div#create-pub-form {
   max-width: 36rem;
 }
 
-div#bg-explorar {
+div.bg {
   background-color: #eee;
+}
+
+form.card {
+  margin-bottom: 100px;
+}
+
+form label {
+  color: white;
 }
 
 div#pub-img-wrapper {
@@ -59,11 +67,11 @@ div#bg-explorar .a-reproducir {
   display: inline;
 }
 
-.a-reproducir.reproduciendo .fa-pause {
+.a-reproducir.reproduciendo .fa-stop {
   display: inline;
 }
 
-.a-reproducir:not(.reproduciendo) .fa-pause {
+.a-reproducir:not(.reproduciendo) .fa-stop {
   display: none;
 }
 
@@ -81,4 +89,24 @@ div#bg-explorar .a-reproducir {
 
 .a-reproducir:not(.reproduciendo) #spn-pausar {
   display: none;
+}
+
+form#contacto {
+  max-width: 36rem;
+}
+
+form#login-form {
+  max-width: 18rem;
+}
+
+.navbar ul li a {
+  white-space: nowrap;
+}
+
+#logo {
+  max-width: 100px;
+}
+
+.navbar {
+  padding-top: 5rem;
 }
