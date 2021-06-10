@@ -23,8 +23,8 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
         document.querySelector(".navbar li a#contacto").classList.add("active");
     </script>
     <div class="bg p-1">
-        <form id="contacto" class="bg-dark mx-auto my-5 p-4 card card-body">
-            <h3 class="p-4 text-center text-white">Contacto</h3>
+        <form id="contacto" class="mx-auto my-5 p-4 card card-body">
+            <h3 class="p-4 text-center">Contacto</h3>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1">Nombre</label>
                 <input type="text" class="form-control" id="nombre" aria-describedby="nombreHelp" placeholder="Nombre">
@@ -37,7 +37,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1">Teléfono</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                <input type="text" class="form-control" id="telefono" aria-describedby="telefonoHelp" placeholder="Teléfono">
                 <small id="emailHelp" class="form-text text-muted">Respetamos tu privacidad, tu teléfono no será
                     compartido con nadie.</small>
             </div>

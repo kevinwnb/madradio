@@ -13,15 +13,11 @@ div#create-pub-form {
 }
 
 div.bg {
-  background-color: #e1e1e1;
+  background-color: #c0c0c0;
 }
 
 form.card {
   margin-bottom: 100px;
-}
-
-form label {
-  color: white;
 }
 
 div#pub-img-wrapper {
@@ -104,5 +100,5 @@ form#login-form {
 }
 
 .navbar {
-  padding-top: 5rem;
+  padding-top: 2.5rem;
 }

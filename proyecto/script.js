@@ -421,3 +421,37 @@ if (document.querySelector("#modify-pub-form")) {
     window.location.href = base_url + "publicaciones/mi-contenido.php";
   });
 }
+
+if (document.querySelector("form#contacto")) {
+  document
+    .querySelector("button#send-btn")
+    .addEventListener("click", function () {
+      let fields = {
+        nombre: document.querySelector("#nombre").value,
+        email: document.querySelector("#email").value,
+        telefono: document.querySelector("#telefono").value,
+        mensaje: document.querySelector("#mensaje").value,
+      };
+      fetch(base_url + "api/contacto.php", {
+        method: "POST",
+        body: JSON.stringify(fields),
+      })
+        .then((res) => res.json())
+        .then((data) => alert(data.msg));
+    });
+}
+
+function validate(fields) {
+  let ul = document.createElement("ul");
+  ul.classList.add("errores");
+
+  if (fields.nombre && fields.nombre == "") {
+    let li = document.createElement("li");
+    li.innerText = "Nombre es requerido";
+  }
+
+  if (fields.nombre && fields.email == "") {
+    let li = document.createElement("li");
+    li.innerText = "Email es requerido";
+  }
+}
