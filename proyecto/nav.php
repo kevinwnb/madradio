@@ -3,8 +3,8 @@ require "base_url.php";
 ?>
 
 <div class="d-flex justify-content-end bg-dark p-3">
-    <div class="botones">
-        <p class="d-inline text-secondary btn bg-dark m-0">
+    <div class="botones w-100 w-sm-auto text-end">
+        <p class="d-block d-sm-inline-block text-secondary btn bg-dark m-0">
             <?php
             if (isset($_SESSION["id_usuario"])) {
                 $user = json_decode(file_get_contents($base_url . "/api/usuarios/read.php?id=" . $_SESSION["id_usuario"]));
@@ -12,12 +12,12 @@ require "base_url.php";
             }
             ?>
         </p>
-        <a href="/publicaciones/crear.php" type="button" class="btn btn-warning" id="boton-subir"><i class="fas fa-microphone"></i> Subir</a>
+        <a href="/publicaciones/crear.php" class="d-block d-sm-inline-block btn btn-warning" id="boton-subir"><i class="fas fa-microphone"></i> Subir</a>
         <?php
         if (!isset($_SESSION["id_usuario"])) {
         ?>
-            <a href="/login.php" type="button" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Acceder</a>
-            <a href="/registro.php" type="button" class="btn btn-light"><i class="fas fa-user-plus"></i> Crear Cuenta</a>
+            <a href="/login.php" type="button" class="d-block d-sm-inline-block btn btn-success"><i class="fas fa-sign-in-alt"></i> Acceder</a>
+            <a href="/registro.php" type="button" class="d-block d-sm-inline-block btn btn-light"><i class="fas fa-user-plus"></i> Crear Cuenta</a>
         <?php
         }
         ?>
@@ -25,7 +25,7 @@ require "base_url.php";
         if (isset($_SESSION["id_usuario"])) {
 
         ?>
-            <a href="javascript:void(0)" id="btn-salir" class="btn btn-outline-danger">Salir <i class="fas fa-sign-out-alt"></i></a>
+            <a href="javascript:void(0)" id="btn-salir" class="d-block d-sm-inline-block btn btn-outline-danger">Salir <i class="fas fa-sign-out-alt"></i></a>
         <?php
         }
         ?>
