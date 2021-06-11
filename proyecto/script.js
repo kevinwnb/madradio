@@ -257,8 +257,8 @@ if (document.querySelector("#tabla-publicaciones-usuario")) {
           a.href = "javascript:void(0)";
           a.innerText = "Eliminar";
           a.classList.add("m-2");
-          a.setAttribute("data-toggle", "modal");
-          a.setAttribute("data-target", "#exampleModal");
+          a.setAttribute("data-bs-toggle", "modal");
+          a.setAttribute("data-bs-target", "#exampleModal");
           a.addEventListener("click", function () {
             document
               .querySelector("#confirm-delete-pub")

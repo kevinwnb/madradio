@@ -11,8 +11,8 @@
 
 <body>
     <a href="/inicio.php" class="btn btn-warning"><i class="fas fa-arrow-left"></i> Volver</a>
-    <!-- Modal -->
 
+    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
