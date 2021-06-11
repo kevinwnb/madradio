@@ -143,41 +143,45 @@ if (document.querySelector("#modify-user-form")) {
       option.value = data.role_id;
       option.innerText = data.role;
       option.selected = "selected";
-      document.querySelector("#select-role").appendChild(option);
+      document.querySelector("#role_id").appendChild(option);
 
       if (data.role_id == 1) {
         option = document.createElement("option");
         option.value = 2;
         option.innerText = "Cliente";
-        document.querySelector("#select-role").appendChild(option);
+        document.querySelector("#role_id").appendChild(option);
       } else {
         option = document.createElement("option");
         option.value = 1;
         option.innerText = "Administrador";
-        document.querySelector("#select-role").appendChild(option);
+        document.querySelector("#role_id").appendChild(option);
       }
     });
 
   document.querySelector("#update-btn").addEventListener("click", function () {
-    fetch(api_base_url + "api/admin/usuarios/update.php", {
-      method: "POST",
-      body: JSON.stringify({
-        id: id,
-        nombre: document.querySelector("#nombre").value,
-        email: document.querySelector("#email").value,
-        role_id: document.querySelector("#select-role").value,
-        password: document.querySelector("#password").value,
-        repeat_password: document.querySelector("#repeat-password").value,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status) {
-          window.location.href = base_url + "admin/dashboard.php";
-        } else {
-          alert(data.msg);
-        }
-      });
+    let fields = {
+      id: id,
+      nombre: document.querySelector("#nombre").value,
+      email: document.querySelector("#email").value,
+      role_id: document.querySelector("#role_id").value,
+      password: document.querySelector("#password").value,
+      repeat_password: document.querySelector("#repeat-password").value,
+    };
+
+    if (validate(fields)) {
+      fetch(api_base_url + "api/admin/usuarios/update.php", {
+        method: "POST",
+        body: JSON.stringify(fields),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status) {
+            window.location.href = base_url + "admin/dashboard.php";
+          } else {
+            alert(data.msg);
+          }
+        });
+    }
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
@@ -303,38 +307,44 @@ if (document.querySelector("#create-pub-form")) {
         var option = document.createElement("option");
         option.value = item.id;
         option.innerText = item.nombre;
-        document.querySelector("#select-genero").appendChild(option);
+        document.querySelector("#id_genero").appendChild(option);
       });
     });
 
   document.querySelector("#create-btn").addEventListener("click", function () {
-    let formData = new FormData();
-    formData.append(
-      "json",
-      JSON.stringify({
-        titulo: document.querySelector("#titulo").value,
-        descripcion: document.querySelector("#descripcion").value,
-        etiquetas: document.querySelector("#etiquetas").value,
-        id_categoria: document.querySelector("#select-categoria").value,
-        id_genero: document.querySelector("#select-genero").value,
+    let fields = {
+      titulo: document.querySelector("#titulo").value,
+      descripcion: document.querySelector("#descripcion").value,
+      etiquetas: document.querySelector("#etiquetas").value,
+      id_categoria: document.querySelector("#id_categoria").value,
+      id_genero: document.querySelector("#id_genero").value,
+    };
+
+    let files = {
+      imagen: document.querySelector("#imagen").files[0],
+      audio: document.querySelector("#audio").files[0],
+    };
+
+    if (validate(fields) & validateFiles(files)) {
+      let formData = new FormData();
+      formData.append("json", JSON.stringify(fields));
+
+      formData.append("imagen", document.querySelector("#imagen").files[0]);
+      formData.append("audio", document.querySelector("#audio").files[0]);
+
+      fetch(api_base_url + "api/publicaciones/create.php", {
+        method: "POST",
+        body: formData,
       })
-    );
-
-    formData.append("imagen", document.querySelector("#imagen").files[0]);
-    formData.append("audio", document.querySelector("#audio").files[0]);
-
-    fetch(api_base_url + "api/publicaciones/create.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status) {
-          window.location.href = base_url + "publicaciones/mi-contenido.php";
-        } else {
-          alert(data.msg);
-        }
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status) {
+            window.location.href = base_url + "publicaciones/mi-contenido.php";
+          } else {
+            alert(data.msg);
+          }
+        });
+    }
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
@@ -458,9 +468,48 @@ function validate(fields) {
 
   Object.keys(fields).forEach((key) => {
     if (
+      document.querySelector("#" + key) &&
       document.querySelector("#" + key).hasAttribute("required") &&
       fields[key] == ""
     ) {
+      errores++;
+      document.querySelector("#" + key).classList.add("border");
+      document.querySelector("#" + key).classList.add("border-danger");
+      let small = document.createElement("small");
+      small.innerText =
+        document.querySelector("#" + key).previousElementSibling.innerText +
+        " es requerido";
+      small.classList.add("error");
+      small.classList.add("text-danger");
+      //li.classList.add("valid-feedback");
+      document
+        .querySelector("#" + key)
+        .parentNode.insertBefore(
+          small,
+          document.querySelector("#" + key).nextSibling
+        );
+    }
+
+    if (key == "id_categoria" && fields[key] == 0) {
+      errores++;
+      document.querySelector("#" + key).classList.add("border");
+      document.querySelector("#" + key).classList.add("border-danger");
+      let small = document.createElement("small");
+      small.innerText =
+        document.querySelector("#" + key).previousElementSibling.innerText +
+        " es requerido";
+      small.classList.add("error");
+      small.classList.add("text-danger");
+      //li.classList.add("valid-feedback");
+      document
+        .querySelector("#" + key)
+        .parentNode.insertBefore(
+          small,
+          document.querySelector("#" + key).nextSibling
+        );
+    }
+
+    if (key == "id_genero" && fields[key] == 0) {
       errores++;
       document.querySelector("#" + key).classList.add("border");
       document.querySelector("#" + key).classList.add("border-danger");
@@ -527,6 +576,32 @@ function validate(fields) {
         .parentNode.insertBefore(
           small,
           document.querySelector("#repeat_password").nextSibling
+        );
+    }
+  });
+
+  return errores == 0;
+}
+
+function validateFiles(files) {
+  let errores = 0;
+  Object.keys(files).forEach((key) => {
+    if (files[key] == undefined) {
+      errores++;
+      document.querySelector("#" + key).classList.add("border");
+      document.querySelector("#" + key).classList.add("border-danger");
+      let small = document.createElement("small");
+      small.innerText =
+        document.querySelector("#" + key).previousElementSibling.innerText +
+        " es requerido";
+      small.classList.add("error");
+      small.classList.add("text-danger");
+      //li.classList.add("valid-feedback");
+      document
+        .querySelector("#" + key)
+        .parentNode.insertBefore(
+          small,
+          document.querySelector("#" + key).nextSibling
         );
     }
   });

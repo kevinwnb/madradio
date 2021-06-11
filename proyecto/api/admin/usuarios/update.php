@@ -39,11 +39,15 @@ if (!empty($data->password)) {
     // ejecutamos
     $stmt->execute();
 
-    if ($stmt->affected_rows <= 0) {
+    if ($stmt->affected_rows <= 0 && $stmt->error != "") {
+        echo json_encode(["status" => false, "msg" => "No se ha modificado el usuario", "error" => $stmt->error]);
         $stmt->close();
         $link->close();
-        echo json_encode(["status" => false, "msg" => "No se ha modificado el usuario"]);
         exit;
+    }
+
+    if ($id == $_SESSION["id_usuario"]) {
+        $_SESSION["role_id"] = $role_id;
     }
 
     $stmt->close();
@@ -60,11 +64,15 @@ if (!empty($data->password)) {
     // ejecutamos
     $stmt->execute();
 
-    if ($stmt->affected_rows <= 0) {
+    if ($stmt->affected_rows <= 0 && $stmt->error != "") {
+        echo json_encode(["status" => false, "msg" => "No se ha modificado el usuario", "error" => $stmt->error]);
         $stmt->close();
         $link->close();
-        echo json_encode(["status" => false, "msg" => "No se ha modificado el usuario"]);
         exit;
+    }
+
+    if ($id == $_SESSION["id_usuario"]) {
+        $_SESSION["role_id"] = $role_id;
     }
 
     $stmt->close();

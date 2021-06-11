@@ -15,18 +15,16 @@
         <div class="card-body">
             <form>
                 <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail1">Nombre</label>
-                    <input type="email" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Nombre">
+                    * <label class="form-label" for="exampleInputEmail1">Nombre</label>
+                    <input type="email" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Nombre" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
-                    <small id="emailHelp" class="form-text text-muted">Respetamos tu privacidad, tu email no será
-                        compartido con nadie.</small>
+                    * <label class="form-label" for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail1">Role</label>
-                    <select id="select-role" class="form-control">
+                    * <label class="form-label" for="exampleInputEmail1">Role</label>
+                    <select id="role_id" class="form-control">
 
                     </select>
                 </div>
@@ -38,7 +36,9 @@
                     <label class="form-label" for="exampleInputPassword1">Repetir Contraseña</label>
                     <input type="password" class="form-control" id="repeat-password" placeholder="Repetir Contraseña">
                 </div>
-                <div class="text-center">
+                <small id="emailHelp" class="form-text text-muted">Respetamos tu privacidad, tus datos no serán
+                    compartidos con nadie</small>
+                <div class="text-center mt-3">
                     <button id="update-btn" type="button" class="btn btn-warning">Guardar</button>
                     <button id="cancel-btn" type="button" class="btn btn-secondary">Cancelar</button>
                 </div>
