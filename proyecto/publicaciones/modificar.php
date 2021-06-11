@@ -14,7 +14,7 @@
     require $root . "/nav.php" ?>
 
     <h3 class="m-5 text-center">Modificar Publicación</h3>
-    <div id="modify-pub-form" class="card mx-auto">
+    <div id="modify-pub-form" class="card mx-auto pub">
         <div class="card-body">
             <form>
                 <div class="mb-3">
@@ -43,8 +43,8 @@
                         <option value="0" selected>--Selecciona Género--</option>
                     </select>
                 </div>
-                <div class="bg-secondary rounded p-2">
-                    <small class="text-warning">Si seleccionas una imágen o audio se reemplazarán los archivos
+                <div class="bg-success rounded p-2 mb-3">
+                    <small class="text-warning d-inline-block p-3">Si seleccionas una imágen o audio se reemplazarán los archivos
                         actuales</small>
                     <div class="mb-3">
                         <label class="form-label" class="text-white" for="exampleInputPassword1">Reemplazar Imágen</label>

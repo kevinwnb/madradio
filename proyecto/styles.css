@@ -8,6 +8,10 @@ div.card:not(.pub) {
   max-width: 18rem;
 }
 
+div.card.pub {
+  max-width: 36rem;
+}
+
 div#create-pub-form {
   max-width: 36rem;
 }
