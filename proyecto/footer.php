@@ -4,7 +4,7 @@
             Politíca de privacidad y condiciones legales
         </div>
         <div class="col-md-4 pt-4">
-            <img src="imagenes/Mad radio sin circulo negro.png" class="img-fluid mx-auto" width="35%" ALT="Logo-MadRadio">
+            <img src="/imagenes/Mad radio sin circulo negro.png" class="img-fluid mx-auto" width="35%" ALT="Logo-MadRadio">
         </div>
         <div class="col-md-4 pt-5">
             <p>© 2021 MadRadio - Todos los derechos reservados</p>

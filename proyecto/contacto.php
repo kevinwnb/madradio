@@ -12,7 +12,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
     <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . "/head.php" ?>
-    <title>Explorar</title>
+    <title>Contacto</title>
 </head>
 
 <body>
