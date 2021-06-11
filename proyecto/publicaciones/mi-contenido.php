@@ -36,7 +36,7 @@
 
     <h3 class="text-center m-5">Mi Contenido</h3>
 
-    <a id="crear-btn" class="btn btn-success m-2" href="crear.html">Crear Publicación</a>
+    <a id="crear-btn" class="btn btn-success m-2" href="crear.php">Crear Publicación</a>
     <table id="tabla-publicaciones-usuario" class="table">
         <thead>
             <tr>

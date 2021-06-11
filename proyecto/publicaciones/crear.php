@@ -45,11 +45,11 @@
                 </div>
                 <div class="mb-3">
                     * <label class="form-label" for="exampleInputPassword1">Imágen</label>
-                    <input type="file" class="form-control" id="imagen">
+                    <input type="file" class="form-control" id="imagen" required>
                 </div>
                 <div class="mb-3">
                     * <label class="form-label" for="exampleInputPassword1">Audio</label>
-                    <input type="file" class="form-control" id="audio">
+                    <input type="file" class="form-control" id="audio" required>
                 </div>
                 <div class="text-center">
                     <button id="create-btn" type="button" class="btn btn-success">Crear</button>

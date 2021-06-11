@@ -381,7 +381,7 @@ if (document.querySelector("#modify-pub-form")) {
         if (item.id == id_categoria) {
           option.selected = "selected";
         }
-        document.querySelector("#select-categoria").appendChild(option);
+        document.querySelector("#id_categoria").appendChild(option);
       });
     });
 
@@ -395,39 +395,38 @@ if (document.querySelector("#modify-pub-form")) {
         if (item.id == id_genero) {
           option.selected = "selected";
         }
-        document.querySelector("#select-genero").appendChild(option);
+        document.querySelector("#id_genero").appendChild(option);
       });
     });
 
   document.querySelector("#modify-btn").addEventListener("click", function () {
-    let formData = new FormData();
-    formData.append(
-      "json",
-      JSON.stringify({
-        id: id,
-        titulo: document.querySelector("#titulo").value,
-        descripcion: document.querySelector("#descripcion").value,
-        etiquetas: document.querySelector("#etiquetas").value,
-        id_categoria: document.querySelector("#select-categoria").value,
-        id_genero: document.querySelector("#select-genero").value,
+    let fields = {
+      id: id,
+      titulo: document.querySelector("#titulo").value,
+      descripcion: document.querySelector("#descripcion").value,
+      etiquetas: document.querySelector("#etiquetas").value,
+      id_categoria: document.querySelector("#id_categoria").value,
+      id_genero: document.querySelector("#id_genero").value,
+    };
+    if (validate(fields)) {
+      let formData = new FormData();
+      formData.append("json", JSON.stringify(fields));
+
+      formData.append("imagen", document.querySelector("#imagen").files[0]);
+      formData.append("audio", document.querySelector("#audio").files[0]);
+      fetch(api_base_url + "api/publicaciones/update.php", {
+        method: "POST",
+        body: formData,
       })
-    );
-
-    formData.append("imagen", document.querySelector("#imagen").files[0]);
-    formData.append("audio", document.querySelector("#audio").files[0]);
-
-    fetch(api_base_url + "api/publicaciones/update.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status) {
-          window.location.href = base_url + "publicaciones/mi-contenido.php";
-        } else {
-          alert(data.msg);
-        }
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status) {
+            window.location.href = base_url + "publicaciones/mi-contenido.php";
+          } else {
+            alert(data.msg);
+          }
+        });
+    }
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
@@ -586,7 +585,10 @@ function validate(fields) {
 function validateFiles(files) {
   let errores = 0;
   Object.keys(files).forEach((key) => {
-    if (files[key] == undefined) {
+    if (
+      document.querySelector("#" + key).hasAttribute("required") &&
+      files[key] == undefined
+    ) {
       errores++;
       document.querySelector("#" + key).classList.add("border");
       document.querySelector("#" + key).classList.add("border-danger");
