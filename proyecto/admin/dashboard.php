@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <a href="../inicio.html" class="btn btn-warning"><i class="fas fa-arrow-left"></i> Volver</a>
+    <a href="/inicio.php" class="btn btn-warning"><i class="fas fa-arrow-left"></i> Volver</a>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -37,7 +37,7 @@
 
     <h3 class="text-center m-5">Admin Dashboard</h3>
 
-    <a id="crear-btn" class="btn btn-success m-2" href="crear.html">Añadir Usuario</a>
+    <a id="crear-btn" class="btn btn-success m-2" href="crear.php">Añadir Usuario</a>
     <table id="tabla-usuarios" class="table">
         <thead>
             <tr>

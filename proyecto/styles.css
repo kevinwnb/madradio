@@ -13,7 +13,7 @@ div#create-pub-form {
 }
 
 div.bg {
-  background-color: #c0c0c0;
+  background-color: #eee;
 }
 
 form.card {
@@ -101,4 +101,8 @@ form#login-form {
 
 .navbar {
   padding-top: 2.5rem;
+}
+
+.errores {
+  color: red;
 }

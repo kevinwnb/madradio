@@ -3,7 +3,7 @@ require "base_url.php";
 ?>
 
 <div class="d-flex justify-content-end bg-dark p-3">
-    <div class="botones w-100 w-sm-auto text-end">
+    <div class="botones text-end d-none d-lg-block">
         <a href="/publicaciones/crear.php" class="d-block d-sm-inline-block btn btn-warning" id="boton-subir"><i class="fas fa-microphone"></i> Subir</a>
         <?php
         if (!isset($_SESSION["id_usuario"])) {
@@ -47,6 +47,42 @@ require "base_url.php";
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="botones text-end d-lg-none">
+                <a href="/publicaciones/crear.php" class="btn btn-warning" id="boton-subir"><i class="fas fa-microphone"></i> Subir</a>
+                <?php
+                if (!isset($_SESSION["id_usuario"])) {
+                ?>
+                    <a href="/login.php" type="button" class="d-block d-sm-inline-block btn btn-success"><i class="fas fa-sign-in-alt"></i> Acceder</a>
+                    <a href="/registro.php" type="button" class="d-block d-sm-inline-block btn btn-light"><i class="fas fa-user-plus"></i> Crear Cuenta</a>
+                <?php
+                }
+                ?>
+                <?php
+                if (isset($_SESSION["id_usuario"])) {
+
+                ?>
+                    <div class="d-inline-block dropdown">
+                        <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                            <?php
+                            $user = json_decode(file_get_contents($base_url . "/api/usuarios/read.php?id=" . $_SESSION["id_usuario"]));
+                            echo "Bienvenido " . strtok($user->nombre, ' '); ?>
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a href="javascript:void(0)" id="btn-salir" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+                            <li><a class="dropdown-item" href="/publicaciones/mi-contenido.php"><i class="fas fa-pencil-alt"></i> Mi Contenido</a></li>
+                            <?php if ($_SESSION["role_id"] == 1) {
+                            ?>
+                                <li><a class="dropdown-item" href="/admin/dashboard.php"><i class="fas fa-plus"></i> Administrar</a></li>
+                            <?php
+                            } ?>
+                        </ul>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a id="inicio" class="nav-link" aria-current="page" href="/inicio.php">Inicio</a>
@@ -62,8 +98,8 @@ require "base_url.php";
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-light d-inline-flex align-items-center" type="submit"><i class="fas fa-search me-1"></i>Buscar</button>
             </form>
         </div>
     </div>

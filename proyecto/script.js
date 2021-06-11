@@ -188,24 +188,27 @@ if (document.querySelector("#modify-user-form")) {
 // Crear Usuario
 if (document.querySelector("#create-user-form")) {
   document.querySelector("#create-btn").addEventListener("click", function () {
-    fetch(api_base_url + "api/admin/usuarios/create.php", {
-      method: "POST",
-      body: JSON.stringify({
-        nombre: document.querySelector("#nombre").value,
-        email: document.querySelector("#email").value,
-        role_id: document.querySelector("#select-role").value,
-        password: document.querySelector("#password").value,
-        repeat_password: document.querySelector("#repeat-password").value,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status) {
-          window.location.href = base_url + "admin/dashboard.php";
-        } else {
-          alert(data.msg);
-        }
-      });
+    let fields = {
+      nombre: document.querySelector("#nombre").value,
+      email: document.querySelector("#email").value,
+      role_id: document.querySelector("#role_id").value,
+      password: document.querySelector("#password").value,
+      repeat_password: document.querySelector("#repeat_password").value,
+    };
+    if (validate(fields)) {
+      fetch(api_base_url + "api/admin/usuarios/create.php", {
+        method: "POST",
+        body: JSON.stringify(fields),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status) {
+            window.location.href = base_url + "admin/dashboard.php";
+          } else {
+            alert(data.msg);
+          }
+        });
+    }
   });
 
   document.querySelector("#cancel-btn").addEventListener("click", function () {
@@ -432,26 +435,111 @@ if (document.querySelector("form#contacto")) {
         telefono: document.querySelector("#telefono").value,
         mensaje: document.querySelector("#mensaje").value,
       };
-      fetch(base_url + "api/contacto.php", {
-        method: "POST",
-        body: JSON.stringify(fields),
-      })
-        .then((res) => res.json())
-        .then((data) => alert(data.msg));
+      if (validate(fields)) {
+        fetch(base_url + "api/contacto.php", {
+          method: "POST",
+          body: JSON.stringify(fields),
+        })
+          .then((res) => res.json())
+          .then((data) => alert(data.msg));
+      }
     });
 }
 
 function validate(fields) {
-  let ul = document.createElement("ul");
-  ul.classList.add("errores");
+  document.querySelectorAll(".error").forEach((e) => e.remove());
+  document
+    .querySelectorAll(".form-control.border.border-danger")
+    .forEach((e) => {
+      e.classList.remove("border");
+      e.classList.remove("border-danger");
+    });
+  let errores = 0;
 
-  if (fields.nombre && fields.nombre == "") {
-    let li = document.createElement("li");
-    li.innerText = "Nombre es requerido";
-  }
+  Object.keys(fields).forEach((key) => {
+    if (
+      document.querySelector("#" + key).hasAttribute("required") &&
+      fields[key] == ""
+    ) {
+      errores++;
+      document.querySelector("#" + key).classList.add("border");
+      document.querySelector("#" + key).classList.add("border-danger");
+      let small = document.createElement("small");
+      small.innerText =
+        document.querySelector("#" + key).previousElementSibling.innerText +
+        " es requerido";
+      small.classList.add("error");
+      small.classList.add("text-danger");
+      //li.classList.add("valid-feedback");
+      document
+        .querySelector("#" + key)
+        .parentNode.insertBefore(
+          small,
+          document.querySelector("#" + key).nextSibling
+        );
+    }
 
-  if (fields.nombre && fields.email == "") {
-    let li = document.createElement("li");
-    li.innerText = "Email es requerido";
-  }
+    if (key == "email" && (fields[key] != "") & !validateEmail(fields[key])) {
+      errores++;
+      document.querySelector("#" + key).classList.add("border");
+      document.querySelector("#" + key).classList.add("border-danger");
+      let small = document.createElement("small");
+      small.innerText =
+        document.querySelector("#" + key).previousElementSibling.innerText +
+        " es inválido";
+      small.classList.add("error");
+      small.classList.add("text-danger");
+      //li.classList.add("valid-feedback");
+      document
+        .querySelector("#" + key)
+        .parentNode.insertBefore(
+          small,
+          document.querySelector("#" + key).nextSibling
+        );
+    }
+
+    if (
+      key == "password" &&
+      fields[key] != "" &&
+      fields["repeat_password"] != "" &&
+      fields[key] != fields["repeat_password"]
+    ) {
+      errores++;
+      document.querySelector("#" + key).classList.add("border");
+      document.querySelector("#" + key).classList.add("border-danger");
+      document.querySelector("#repeat_password").classList.add("border");
+      document.querySelector("#repeat_password").classList.add("border-danger");
+      let small = document.createElement("small");
+      small.innerText =
+        document.querySelector("#" + key).previousElementSibling.innerText +
+        " no coincide";
+      small.classList.add("error");
+      small.classList.add("text-danger");
+      //li.classList.add("valid-feedback");
+      document
+        .querySelector("#" + key)
+        .parentNode.insertBefore(
+          small,
+          document.querySelector("#" + key).nextSibling
+        );
+      document
+        .querySelector("#repeat_password")
+        .parentNode.insertBefore(
+          small,
+          document.querySelector("#repeat_password").nextSibling
+        );
+    }
+  });
+
+  return errores == 0;
+}
+
+function validateEmail(email) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
