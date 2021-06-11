@@ -27,24 +27,28 @@ if (document.querySelector("#register-btn")) {
   document
     .querySelector("#register-btn")
     .addEventListener("click", function () {
-      fetch(api_base_url + "api/register.php", {
-        method: "POST",
-        body: JSON.stringify({
-          nombre: document.querySelector("#nombre").value,
-          email: document.querySelector("#email").value,
-          password: document.querySelector("#password").value,
-          repeat_password: document.querySelector("#repeat-password").value,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.status) {
-            alert(data.msg);
-            window.location.replace(base_url + "login.php");
-          } else {
-            alert(data.msg);
-          }
-        });
+      let fields = {
+        nombre: document.querySelector("#nombre").value,
+        email: document.querySelector("#email").value,
+        password: document.querySelector("#password").value,
+        repeat_password: document.querySelector("#repeat_password").value,
+      };
+
+      if (validate(fields)) {
+        fetch(api_base_url + "api/register.php", {
+          method: "POST",
+          body: JSON.stringify(fields),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.status) {
+              alert(data.msg);
+              window.location.replace(base_url + "login.php");
+            } else {
+              alert(data.msg);
+            }
+          });
+      }
     });
 }
 

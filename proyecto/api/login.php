@@ -23,7 +23,7 @@ $stmt->bind_param("s", $data->email);
 $stmt->execute();
 $stmt->store_result();
 if ($stmt->num_rows <= 0) {
-    echo json_encode(["status" => false, "msg" => "Usuario con el email proporcionado no existe"]);
+    echo json_encode(["status" => false, "msg" => "Los credenciales son incorrectos"]);
     exit;
 }
 $stmt->bind_result($id_usuario, $role_id, $password);
