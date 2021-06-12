@@ -43,7 +43,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
             </div>
             <div class="text-center">
                 <small id="emailHelp" class="form-text text-muted">Respetamos tu privacidad, tus datos no serán
-                    compartidos con nadie</small>
+                    compartidos con nadie</small><br>
                 <button id="send-btn" type="button" class="btn btn-warning mt-3">Enviar</button>
             </div>
         </form>
