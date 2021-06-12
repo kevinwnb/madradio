@@ -1,2 +1,2 @@
 <?php
-$base_url = "http://localhost";
+$base_url = $_SERVER['DOCUMENT_ROOT'];
