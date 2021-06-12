@@ -18,6 +18,7 @@ div#create-pub-form {
 
 div.bg {
   background-color: #eee;
+  padding: 1px;
 }
 
 form.card {
