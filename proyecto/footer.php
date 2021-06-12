@@ -1,4 +1,4 @@
-<div class="pre-footer bg-dark">
+<div class="pre-footer">
 </div>
 <div class="footer">
     <div class="row text-center mx-auto bg-dark  text-white footer">
