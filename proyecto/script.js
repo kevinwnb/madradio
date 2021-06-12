@@ -1,5 +1,5 @@
-var base_url = "http://localhost/";
-var api_base_url = "http://localhost/";
+var base_url = "http://mad-radio.herokuapp.com/";
+var api_base_url = "http://mad-radio.herokuapp.com/";
 
 // Login
 if (document.querySelector("#login-btn")) {
