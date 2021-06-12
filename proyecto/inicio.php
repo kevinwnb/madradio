@@ -1,9 +1,9 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/base_url.php";
 
-$publicaciones = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/publicaciones/all.php"));
-$categorias = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/categorias/all.php"));
-$generos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/api/generos/all.php"));
+$publicaciones = json_decode(file_get_contents("api/publicaciones/all.php"));
+$categorias = json_decode(file_get_contents("api/categorias/all.php"));
+$generos = json_decode(file_get_contents("api/generos/all.php"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
