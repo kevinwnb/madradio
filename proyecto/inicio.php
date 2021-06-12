@@ -31,7 +31,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                     <h2>El hogar de las infinitas posibilidades para subir tu audio mp3</h2>
                     <p>Es la solución integral para la creación, distribución de tu audio. Inicia tu apasionante proyecto o hacer
                         crecer una empresa de radio nunca ha sido tan fácil. </p>
-                    <a class="btn btn-outline-warning" href="publicaciones/crear.php">Comienza a crear</a>
+                    <a class="btn btn-outline-dark" href="publicaciones/crear.php">Comienza a crear</a>
                 </div>
             </div>
             <div class="col-md-6 text-center">
@@ -178,7 +178,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                         } ?>
                     </div>
                 </section>
-                <button class="btn btn-outline-warning mt-5" type="button">Descubre Más</button>
+                <button class="btn btn-outline-dark my-5" type="button">Descubre Más</button>
             </div>
         </div>
     </div>
