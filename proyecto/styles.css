@@ -123,12 +123,11 @@ form#login-form {
 }
 
 .pre-footer {
-  height: 175px;
   width: 100%;
 }
 @media only screen and (max-width: 767px) {
   .pre-footer {
-    height: 363px;
+    height: 175px;
   }
 }
 
