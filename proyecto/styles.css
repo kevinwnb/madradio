@@ -4,6 +4,12 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+html,
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
 div.card:not(.pub) {
   max-width: 18rem;
 }
@@ -114,6 +120,11 @@ form#login-form {
 
 .errores {
   color: red;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
 }
 
 .footer ul li a {
