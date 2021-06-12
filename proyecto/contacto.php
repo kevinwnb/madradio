@@ -22,7 +22,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
     <script>
         document.querySelector(".navbar li a#contacto").classList.add("active");
     </script>
-    <div class="bg p-1">
+    <div class="bg">
         <form id="contacto" class="mx-auto my-5 p-4 card card-body">
             <h3 class="p-4 text-center">Contacto</h3>
             <div class="mb-3">

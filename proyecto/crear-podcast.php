@@ -85,36 +85,9 @@
             </div>
         </div>
     </div>
-    <hr class="mt-5">
-    <div class="container-md mt-5">
-        <div class="row">
-            <div class="col-sm-6 col-md-5">
-                <img class="rounded-lg-3 img-fluid" src="imagenes/subir.jpg" alt="">
-            </div>
-
-            <div class="col-sm-6 col-md-5 pt-5">
-                <h2>Publica ya tu contenido !</h2>
-                <p>Ahora que ya has unido todas las piezas del rompecabezas de tu podcast, es el momento de empezar. Independientemente de cuál sea el tema de tu podcast, siempre habrá un nicho de mercado esperando a escuchar lo que tengas que decir.
-                    Así que no dejes que pase más tiempo... ¡Ha llegado el momento de sumergirte en MadRadio! </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid mt-5">
-        <div class="row text-center bg-dark p-5 text-white footer">
-            <div class="col-md-4 mb-2 pt-5">
-                Politíca de privacidad y condiciones legales
-            </div>
-            <div class="col-md-4 pt-4">
-                <img src="imagenes/Mad radio sin circulo negro.png" class="img-fluid mx-auto" width="35%" ALT="Logo-MadRadio">
-            </div>
-            <div class="col-md-4 pt-5">
-                <p>© 2021 MadRadio - Todos los derechos reservados</p>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <?php
+    $root = $_SERVER['DOCUMENT_ROOT'];
+    require $root . "/footer.php" ?>
 </body>
 
 </html>
