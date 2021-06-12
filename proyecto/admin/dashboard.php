@@ -19,7 +19,7 @@ if (!isset($_SESSION["id_usuario"])) {
     <a href="/inicio.php" class="btn btn-warning"><i class="fas fa-arrow-left"></i> Volver</a>
 
     <?php if ($_SESSION["role_id"] == 2) {
-        echo "<div class='alert alert-danger'>Esta sección es para administradores</div>";
+        echo "<div class='alert alert-danger m-5' style='max-width: 600px;'>Esta sección es para administradores</div>";
     } else { ?>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1">
