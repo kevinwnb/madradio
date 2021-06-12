@@ -1,7 +1,7 @@
 <div class="footer">
     <div class="row text-center mx-auto bg-dark  text-white footer">
         <div class="col-xs-12 col-sm-12 col-md-4 mb-2 pt-5">
-            <img src="/imagenes/Mad radio sin circulo negro.png" class="img-fluid mx-auto" width="25%" ALT="Logo-MadRadio">
+            <img style="max-width: 100px;" src="/imagenes/Mad radio sin circulo negro.png" class="img-fluid mx-auto" ALT="Logo-MadRadio">
         </div>
         <div class="col-md-4 pt-4 align-self-center">
             <p>© 2021 MadRadio - Todos los derechos reservados</p>
