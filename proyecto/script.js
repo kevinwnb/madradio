@@ -538,6 +538,15 @@ function getComments(id_publicacion) {
     });
 }
 
+if (document.querySelector("#btn_search")) {
+  document.querySelector("#btn_search").addEventListener("click", function () {
+    window.location.href =
+      base_url +
+      "search.php?search=" +
+      document.querySelector("#search_string").value.replace(" ", "%20");
+  });
+}
+
 function validate(fields) {
   document.querySelectorAll(".error").forEach((e) => e.remove());
   document

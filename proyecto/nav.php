@@ -102,8 +102,8 @@ require "base_url.php";
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                <button class="btn btn-outline-light d-inline-flex align-items-center" type="submit"><i class="fas fa-search me-1"></i>Buscar</button>
+                <input id="search_string" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                <button id="btn_search" class="btn btn-outline-light d-inline-flex align-items-center" type="button"><i class="fas fa-search me-1"></i>Buscar</button>
             </form>
         </div>
     </div>
