@@ -128,7 +128,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
         </div>
     </div>
     <hr>
-    <div class="container-md bg-light  pt-5" style="padding-bottom: 125px;">
+    <div class="container-md bg-light  pt-5">
         <div class="row mt-3">
             <div class="col-12 text-center">
                 <h2>Descubre nuestros podcasts y radio mas destacados</h2>
