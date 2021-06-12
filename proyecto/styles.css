@@ -114,3 +114,12 @@ form#login-form {
 .errores {
   color: red;
 }
+
+.footer ul li a {
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.footer ul li a:hover {
+  color: orange;
+}
