@@ -25,7 +25,6 @@ div#create-pub-form {
 div.bg {
   background-color: #eee;
   padding: 1px;
-  padding-bottom: 125px;
 }
 
 form.card {
@@ -121,6 +120,11 @@ form#login-form {
 
 .errores {
   color: red;
+}
+
+.pre-footer {
+  height: 125px;
+  width: 100%;
 }
 
 .footer {

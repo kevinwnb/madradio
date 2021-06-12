@@ -1,3 +1,5 @@
+<div class="pre-footer">
+</div>
 <div class="footer">
     <div class="row text-center mx-auto bg-dark  text-white footer">
         <div class="col-xs-12 col-sm-12 col-md-4 mb-2 pt-5">
