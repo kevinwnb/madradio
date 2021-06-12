@@ -1,5 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/base_url.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/db_conexion.php";
 
 $publicaciones = json_decode(file_get_contents($base_url . "/api/publicaciones/all.php"));
 $categorias = json_decode(file_get_contents($base_url . "/api/categorias/all.php"));
