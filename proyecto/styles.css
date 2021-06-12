@@ -54,6 +54,10 @@ div#bg-explorar h2 {
   display: block;
 }
 
+.a-reproducir:hover {
+  color: #505050;
+}
+
 .a-reproducir.reproduciendo {
   background-color: firebrick !important;
   color: rgba(0, 0, 0, 0.5) !important;

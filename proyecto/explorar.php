@@ -16,6 +16,24 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
 </head>
 
 <body>
+    <!--Modal-->
+    <div class="modal fade" tabindex="-1" id="exampleModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
     $root = $_SERVER['DOCUMENT_ROOT'];
     require $root . "/nav.php" ?>
@@ -48,8 +66,8 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                     <div class="carousel-item">
                         <img src="/imagenes/slide3.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
+                            <h5>Lo mejor de lo mejor</h5>
+                            <p>Encuentra todo tipo de música y podcasts adaptado a tus interface_exists.</p>
                         </div>
                     </div>
                 </div>
@@ -94,15 +112,23 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                                 <p class="card-text">
                                     <?php echo substr($p->descripcion, 0, 100) . "..." ?>
                                 </p>
+                                <div class="row mx-0 bg-white">
+                                    <div class="col-6 text-center px-0">
+                                        <a href="javascript:void(0)" class="d-block btn btn-outline-danger border-2 m-1"><i class="far fa-heart fw-bold"></i></a>
+                                    </div>
+                                    <div class="col-6 text-center px-0">
+                                        <a id="btn_comment_<?php echo $p->id; ?>" data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)" class="btn-comment d-block btn btn-dark border-2 m-1"><i class="far fa-comment fw-bold"></i></a>
+                                    </div>
+                                </div>
+                                <?php $audio_id = uniqid(); ?>
+                                <audio id="<?php echo $audio_id ?>">
+                                    <source src="<?php echo $p->url_audio ?>" type="audio/<?php echo substr($p->url_audio, -3) ?>">
+                                    Your browser does not support the audio element.
+                                </audio>
+                                <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 mt-1 bg-warning text-center">
+                                    <i class="fas fa-play"></i><i class="fas fa-stop"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
+                                </a>
                             </div>
-                            <?php $audio_id = uniqid(); ?>
-                            <audio id="<?php echo $audio_id ?>">
-                                <source src="<?php echo $p->url_audio ?>" type="audio/<?php echo substr($p->url_audio, -3) ?>">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
-                                <i class="fas fa-play"></i><i class="fas fa-stop"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
-                            </a>
                         </div>
                     <?php
                     } ?>
@@ -138,16 +164,23 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                                         <p class="card-text">
                                             <?php echo substr($p->descripcion, 0, 100) ?>
                                         </p>
+                                        <div class="row mx-0 bg-white">
+                                            <div class="col-6 text-center px-0">
+                                                <a href="javascript:void(0)" class="d-block btn btn-outline-danger border-2 m-1"><i class="far fa-heart fw-bold"></i></a>
+                                            </div>
+                                            <div class="col-6 text-center px-0">
+                                                <a id="btn_comment_<?php echo $p->id; ?>" data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)" class="btn-comment d-block btn btn-dark border-2 m-1"><i class="far fa-comment fw-bold"></i></a>
+                                            </div>
+                                        </div>
+                                        <?php $audio_id = uniqid(); ?>
+                                        <audio id="<?php echo $audio_id ?>">
+                                            <source src="<?php echo $p->url_audio ?>" type="audio/<?php echo substr($p->url_audio, -3) ?>">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                        <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 mt-1 bg-warning text-center">
+                                            <i class="fas fa-play"></i><i class="fas fa-stop"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
+                                        </a>
                                     </div>
-                                    <?php $audio_id = uniqid(); ?>
-                                    <audio id="<?php echo $audio_id ?>">
-                                        <source src="<?php echo $p->url_audio ?>" type="audio/<?php echo substr($p->url_audio, -3) ?>">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                    <a id="btn-<?php echo $audio_id ?>" onclick="play('<?php echo $audio_id ?>')" href="javascript:void(0)" class="a-reproducir p-3 bg-warning text-center">
-                                        <i class="fas fa-play"></i><i class="fas fa-stop"></i> <span id="spn-reproducir">Reproducir</span><span id="spn-pausar">Pausar</span>
-                                    </a>
-
                                 </div>
                         <?php }
                         } ?>

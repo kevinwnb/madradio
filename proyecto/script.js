@@ -459,6 +459,39 @@ if (document.querySelector("form#contacto")) {
     });
 }
 
+if (document.querySelector(".explorar")) {
+  document.querySelectorAll(".btn-comment").forEach((e) => {
+    e.addEventListener("click", function () {
+      fetch(base_url + "api/comentarios/all.php?id=" + e.id.split("_").pop())
+        .then((res) => res.json())
+        .then((data) => {
+          data.comentarios.forEach((c) => {
+            let div = document.createElement("div");
+            div.classList.add("p-3");
+            div.classList.add("border");
+            div.classList.add("rounded");
+            div.classList.add("mx-2");
+            let div2 = document.createElement("div");
+            div2.classList.add("d-flex");
+            div2.classList.add("justify-content-between");
+            let small = document.createElement("small");
+            small.innerText = c.nombre_usuario;
+            let small2 = document.createElement("small");
+            small2.innerText = c.fecha;
+            div2.appendChild(small);
+            div2.appendChild(small2);
+            div.appendChild(div2);
+            let p = document.createElement("p");
+            p.innerText = c.comentario;
+            p.classList.add("m-2");
+            div.appendChild(p);
+            document.querySelector(".modal .modal-body").appendChild(div);
+          });
+        });
+    });
+  });
+}
+
 function validate(fields) {
   document.querySelectorAll(".error").forEach((e) => e.remove());
   document

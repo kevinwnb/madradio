@@ -33,8 +33,6 @@
                     * <label class="form-label" for="exampleInputEmail1">Categoría</label>
                     <select class="form-control" id="id_categoria" required>
                         <option value="0" selected>--Selecciona Categoría--</option>
-                        <option value="1">Podcast</option>
-                        <option value="2">Radio</option>
                     </select>
                 </div>
                 <div class="mb-3">
