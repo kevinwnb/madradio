@@ -460,36 +460,82 @@ if (document.querySelector("form#contacto")) {
 }
 
 if (document.querySelector(".explorar")) {
+  if (document.querySelector("#btn_enviar")) {
+    document
+      .querySelector("#btn_enviar")
+      .addEventListener("click", function () {
+        let fields = {
+          id_publicacion: parseInt(
+            document.querySelector(".modal #id_publicacion").value
+          ),
+          comentario: document.querySelector("#comentario").value,
+        };
+
+        if (validate(fields)) {
+          fetch(base_url + "api/comentarios/create.php", {
+            method: "POST",
+            body: JSON.stringify(fields),
+          })
+            .then((res) => res.json())
+            .then((data) =>
+              getComments(
+                document.querySelector(".modal #id_publicacion").value
+              )
+            );
+        }
+      });
+  }
+
   document.querySelectorAll(".btn-comment").forEach((e) => {
     e.addEventListener("click", function () {
-      fetch(base_url + "api/comentarios/all.php?id=" + e.id.split("_").pop())
-        .then((res) => res.json())
-        .then((data) => {
-          data.comentarios.forEach((c) => {
-            let div = document.createElement("div");
-            div.classList.add("p-3");
-            div.classList.add("border");
-            div.classList.add("rounded");
-            div.classList.add("mx-2");
-            let div2 = document.createElement("div");
-            div2.classList.add("d-flex");
-            div2.classList.add("justify-content-between");
-            let small = document.createElement("small");
-            small.innerText = c.nombre_usuario;
-            let small2 = document.createElement("small");
-            small2.innerText = c.fecha;
-            div2.appendChild(small);
-            div2.appendChild(small2);
-            div.appendChild(div2);
-            let p = document.createElement("p");
-            p.innerText = c.comentario;
-            p.classList.add("m-2");
-            div.appendChild(p);
-            document.querySelector(".modal .modal-body").appendChild(div);
-          });
-        });
+      if (document.querySelector(".modal #id_publicacion")) {
+        document.querySelector(".modal #id_publicacion").value = e.id
+          .split("_")
+          .pop();
+      }
+      getComments(e.id.split("_").pop());
     });
   });
+}
+
+function getComments(id_publicacion) {
+  let id = parseInt(id_publicacion);
+  document.querySelector(".modal .modal-body").innerHTML = "";
+  fetch(base_url + "api/comentarios/all.php?id=" + id)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.comentarios.length == 0) {
+        let p = document.createElement("p");
+        p.classList.add("d-block");
+        p.classList.add("text-center");
+        p.classList.add("m-3");
+        p.innerText = "No hay comentarios";
+        document.querySelector(".modal .modal-body").appendChild(p);
+      } else {
+        data.comentarios.forEach((c) => {
+          let div = document.createElement("div");
+          div.classList.add("p-3");
+          div.classList.add("border");
+          div.classList.add("rounded");
+          div.classList.add("m-2");
+          let div2 = document.createElement("div");
+          div2.classList.add("d-flex");
+          div2.classList.add("justify-content-between");
+          let small = document.createElement("small");
+          small.innerText = c.nombre_usuario;
+          let small2 = document.createElement("small");
+          small2.innerText = c.fecha;
+          div2.appendChild(small);
+          div2.appendChild(small2);
+          div.appendChild(div2);
+          let p = document.createElement("p");
+          p.innerText = c.comentario;
+          p.classList.add("m-2");
+          div.appendChild(p);
+          document.querySelector(".modal .modal-body").appendChild(div);
+        });
+      }
+    });
 }
 
 function validate(fields) {

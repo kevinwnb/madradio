@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Content-Type: application/json;charset=utf-8");
 
 if (!isset($_SESSION["id_usuario"])) {
@@ -20,7 +21,7 @@ $data = json_decode($json);
 require "../../db_conexion.php";
 
 // preparamos y adjuntamos los parámetros
-$stmt = $link->prepare("INSERT INTO comentarios VALUES (?, ?, ?, ?)");
+$stmt = $link->prepare("INSERT INTO comentarios (id_usuario, comentario, id_publicacion, fecha) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("isis", $id_usuario, $comentario, $id_publicacion, $fecha);
 
 $id_usuario = $_SESSION["id_usuario"];

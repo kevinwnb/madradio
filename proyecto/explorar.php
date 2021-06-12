@@ -1,4 +1,5 @@
 <?php
+session_start();
 require $_SERVER['DOCUMENT_ROOT'] . "/base_url.php";
 
 $publicaciones = json_decode(file_get_contents($base_url . "/api/publicaciones/all.php"));
@@ -21,15 +22,30 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Comentarios</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <div class="text-center w-100">
+                        <h5 class="mb-3">Escribe un Comentario</h5>
+                    </div>
+                    <?php if (isset($_SESSION["id_usuario"])) { ?>
+                        <form class="d-flex w-100">
+                            <input id="id_publicacion" type="hidden">
+                            <input id="comentario" class="form-control border border-dark" type="text" required>
+                            <button id="btn_enviar" type="button" class="btn btn-warning ms-2">Enviar</button>
+                        </form>
+                    <?php } else {
+                    ?>
+                        <div class="text-center w-100">
+                            <p>Debes iniciar sesión para escribir un comentario. </p><a href="/login.php">Iniciar Sesión</a>
+                        </div>
+                    <?php
+                    } ?>
+
                 </div>
             </div>
         </div>
