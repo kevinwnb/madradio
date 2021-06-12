@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: https://mad-radio.herokuapp.com/login.php");
+}
+?>
 <!doctype html>
 
 <html lang="en">

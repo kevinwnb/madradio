@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: https://mad-radio.herokuapp.com/login.php");
+}
+if ($_SESSION["role_id"] == 2) {
+    header("Location: https://mad-radio.herokuapp.com/admin/dashboard.php");
+}
+?>
 <!doctype html>
 
 <html lang="en">
