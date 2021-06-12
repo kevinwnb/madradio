@@ -2,7 +2,6 @@
 require $_SERVER['DOCUMENT_ROOT'] . "/base_url.php";
 
 $publicaciones = json_decode(file_get_contents($base_url . "/api/publicaciones/all.php"));
-echo json_encode($publicaciones);
 $categorias = json_decode(file_get_contents($base_url . "/api/categorias/all.php"));
 $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
 ?>

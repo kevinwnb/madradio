@@ -1,2 +1,2 @@
 <?php
-$base_url = $_SERVER['DOCUMENT_ROOT'];
+$base_url = "https://mad-radio.herokuapp.com";
