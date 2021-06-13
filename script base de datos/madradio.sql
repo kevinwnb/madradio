@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2021 at 12:47 AM
+-- Generation Time: Jun 13, 2021 at 06:21 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -53,6 +53,34 @@ CREATE TABLE `comentarios` (
   `id_publicacion` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactos`
+--
+
+CREATE TABLE `contactos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `mensaje` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactos`
+--
+
+INSERT INTO `contactos` (`id`, `nombre`, `email`, `telefono`, `mensaje`) VALUES
+(1, '', '', '', ''),
+(2, 'lkjlkj', 'lkjklj', 'jlkjlkj', 'lkjlkj'),
+(3, 'a', 'a', 'a', 'a'),
+(4, '', '', '', ''),
+(5, '', '', '', ''),
+(6, 'a', 'a@a.aa', '', 'a'),
+(7, '', '', '', ''),
+(8, 'a', 'a@a.aa', '', 'a');
 
 -- --------------------------------------------------------
 
@@ -154,7 +182,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `role_id`) VALUES
 (7, 'Mario Gonzalez', 'mariogonzalez@mail.com', '$2y$10$IAo7ZZTqdLjALEMkmLJY7eOzKgcCsst.lqkXdk804vDsGq66Z0qry', 1),
 (12, 'Pedro Dafonte', 'pedrodafonte@mail.com', '$2y$10$XhrozptVm1Ls2R7bpDKqpO4G4ccA5afbfhUiz.Xbbw6l/dJ.fT0ka', 2),
 (13, 'Alfonso Rodriguez', 'alfonsorodriguez@mail.com', '$2y$10$Ah4NDEWQPKZzhmYo.QpFHur2.S.ieVPh4yJr/0pMpfR3tbIDP//TC', 2),
-(14, 'Fran Fernandez', 'franfernandez@mail.com', '$2y$10$8Orn4tLcCNx4MOtF9VEGpOtWdF5oe7zvpFrCxbsrrErNzVSBz.RWu', 2);
+(14, 'Fran Fernandeza', 'franfernandeza@mail.com', '$2y$10$8Orn4tLcCNx4MOtF9VEGpOtWdF5oe7zvpFrCxbsrrErNzVSBz.RWu', 1);
 
 --
 -- Indexes for dumped tables
@@ -173,6 +201,12 @@ ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_publicacion` (`id_publicacion`),
   ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indexes for table `contactos`
+--
+ALTER TABLE `contactos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `generos`
@@ -216,7 +250,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT for table `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `contactos`
+--
+ALTER TABLE `contactos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `generos`
@@ -228,7 +268,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT for table `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -240,7 +280,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

@@ -68,22 +68,22 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                     <div class="carousel-item active">
                         <img src="/imagenes/slide1.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <h5>Lo mejor de lo mejor</h5>
+                            <p>Encuentra todo tipo de música y podcasts adaptado a tus intereses.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="/imagenes/slide2.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
+                            <h5>Lo mejor de lo mejor</h5>
+                            <p>Encuentra todo tipo de música y podcasts adaptado a tus intereses.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="/imagenes/slide3.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Lo mejor de lo mejor</h5>
-                            <p>Encuentra todo tipo de música y podcasts adaptado a tus interface_exists.</p>
+                            <p>Encuentra todo tipo de música y podcasts adaptado a tus intereses.</p>
                         </div>
                     </div>
                 </div>
