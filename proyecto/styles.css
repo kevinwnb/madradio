@@ -49,6 +49,28 @@ div#pub-img-wrapper img {
   right: 0;
 }
 
+.far.fa-thumbs-up{
+  color:blue;
+  }
+  
+.fas.fa-shield-alt{
+      color:green;
+}
+  
+.fab.fa-creative-commons-nc-eu{
+      color:rgb(196, 81, 81);
+}
+
+.far.fa-hand-point-right{
+  color:blue;
+}
+
+.far.fa-hand-point-up{
+  color:blue;
+}
+
+
+
 div#bg-explorar h2 {
   color: #505050;
 }
