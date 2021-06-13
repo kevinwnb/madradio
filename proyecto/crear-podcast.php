@@ -32,12 +32,12 @@
             <h2 class="text-center mt-5 mb-4">Pasos a seguir</h2>
             <div class="col-sm-12 col-md-6">
                 <div class="border">
-                    <i class="fa fa-pencil" style="font-size:50px;"></i>
+                    <i class="fas fa-pencil-alt"></i>
                     <h3>Elige un nombre</h3>
                     <p>Elige un nombre que los oyentes puedan encontrar fácilmente, que incluya algunas palabras clave de temas importantes y que refleje tu personalidad o la voz de tu empresa. </p>
                 </div>
                 <div class="mt-5 border">
-                    <i class="fa fa-gear" style="font-size:50px;"></i>
+                    <i class="fas fa-cog"></i>
                     <h3>Formato</h3>
                     <p>Aquí tendrás que decidir qué tipo de formato te ayudará a compartir mejor tu mensaje. ¿Te ayudará un podcast en solitario, una entrevista, un podcast de ficción o uno de estilo narrativo? </p>
                 </div>
@@ -82,6 +82,20 @@
                     <i class="far fa-hand-point-up col-2 align-self-center" style="font-size:50px;"></i>
                     <p class="col-10">Hay muchas herramientas mas que son totalmente gratuitas para grabar tu nuevo podcast o cancion. Hecha un vistazo a Ardour, Anchor y Recording Studio</p>
                 </div>
+            </div>
+        </div>
+    </div>
+    <hr class="mt-5">
+    <div class="container-md mt-5">
+        <div class="row">
+            <div class="col-sm-6 col-md-5">
+                <img class="rounded-lg-3 img-fluid" src="imagenes/subir.jpg" alt="">
+            </div>
+
+            <div class="col-sm-6 col-md-5 pt-5">
+                <h2>Publica ya tu contenido !</h2>
+                <p>Ahora que ya has unido todas las piezas del rompecabezas de tu podcast, es el momento de empezar. Independientemente de cuál sea el tema de tu podcast, siempre habrá un nicho de mercado esperando a escuchar lo que tengas que decir.
+                    Así que no dejes que pase más tiempo... ¡Ha llegado el momento de sumergirte en MadRadio! </p>
             </div>
         </div>
     </div>
