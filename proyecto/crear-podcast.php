@@ -32,12 +32,12 @@
             <h2 class="text-center mt-5 mb-4">Pasos a seguir</h2>
             <div class="col-sm-12 col-md-6">
                 <div class="border">
-                    <i class="fas fa-pencil-alt"></i>
+                    <i class="fas fa-pencil-alt" style="font-size:50px;"></i>
                     <h3>Elige un nombre</h3>
                     <p>Elige un nombre que los oyentes puedan encontrar fácilmente, que incluya algunas palabras clave de temas importantes y que refleje tu personalidad o la voz de tu empresa. </p>
                 </div>
                 <div class="mt-5 border">
-                    <i class="fas fa-cog"></i>
+                    <i class="fas fa-cog" style="font-size:50px;"></i>
                     <h3>Formato</h3>
                     <p>Aquí tendrás que decidir qué tipo de formato te ayudará a compartir mejor tu mensaje. ¿Te ayudará un podcast en solitario, una entrevista, un podcast de ficción o uno de estilo narrativo? </p>
                 </div>
