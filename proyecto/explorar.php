@@ -245,6 +245,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
             }
         }
     </script>
+    <script src="js/jquery-3.2.1.min.js"></script>
 </body>
 
 </html>
