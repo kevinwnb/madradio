@@ -75,7 +75,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                     <img src="/imagenes/slide2.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>MadRadio marcando la diferencia</h5>
-                        <p>Todos vuestros sueños de la musica estan a vuestro alcance aqui.</p>
+                        <p>Todos vuestros sueños de la musica estan a vuestro alcance en MadRadio.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
