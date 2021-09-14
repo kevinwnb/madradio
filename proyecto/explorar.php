@@ -56,7 +56,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
     <script>
         document.querySelector(".navbar li a#explorar").classList.add("active");
     </script>
-    <div id="bg-explorar" class="bg explorar py-5">
+   <div id="bg-explorar" class="bg explorar py-5">
         <div class="container">
             <div id="carouselExampleCaptions" class="carousel slide mb-5" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -75,7 +75,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                     <img src="/imagenes/slide2.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>MadRadio marcando la diferencia</h5>
-                        <p>Todos vuestros sueños de la musica estan a vuestro alcance aqui.</p>
+                        <p>Todos vuestros sueños de la musica estan a vuestro alcance en MadRadio.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -88,11 +88,11 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">Siguiente</span>
             </button>
         </div>
 
@@ -246,5 +246,4 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
         }
     </script>
 </body>
-
 </html>

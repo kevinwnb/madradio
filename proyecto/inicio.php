@@ -178,7 +178,7 @@ $generos = json_decode(file_get_contents($base_url . "/api/generos/all.php"));
                         } ?>
                     </div>
                 </section>
-                <button class="btn btn-outline-dark my-5" type="button">Descubre Más</button>
+                <a href="https://mad-radio.herokuapp.com/explorar.php" class="btn btn-outline-dark my-5" role="button">Descubre Más</a>
             </div>
         </div>
     </div>
